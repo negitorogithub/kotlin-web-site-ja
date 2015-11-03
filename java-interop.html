@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie ie7" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie ie8" lang="en"><![endif]-->
+<!--[if (IE 9)&!(IEMobile)]><html class="no-js ie ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Java Interop</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="Shortcut Icon" href="/kotlin-web-site-ja/assets/images/favicon.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon" href="/kotlin-web-site-ja/assets/images/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="/kotlin-web-site-ja/assets/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/kotlin-web-site-ja/assets/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/kotlin-web-site-ja/assets/images/apple-touch-icon-144x144.png" />
+<link rel="stylesheet" href="/kotlin-web-site-ja/css/styles.css">
+<script src="/kotlin-web-site-ja/js/vendor/requirejs/require.js"></script>
+<script src="/kotlin-web-site-ja/js/config/bootstrap.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5P98"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<!-- CrazyEgg -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0013/6939.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- End CrazyEgg -->
+
+
+<div class="global-layout">
+
+    <header class="global-header">
+
+    <div class="global-header-panel">
+        <div class="g-layout">
+            <a class="global-header-logo" href="/kotlin-web-site-ja/">Kotlin</a>
+
+            
+
+            <nav role="navigation" class="global-nav">
+    
+
+    
+        
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <a href="/kotlin-web-site-ja/docs/reference/"
+           class="nav-item is_active"
+        >
+            Learn
+        </a>
+    
+        
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <a href="/kotlin-web-site-ja/contribute.html"
+           class="nav-item "
+        >
+            Contribute
+        </a>
+    
+        
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <a href="http://try.kotlinlang.org"
+           class="nav-item "
+        >
+            Try Online
+        </a>
+    
+        
+        
+        
+        
+
+        
+            
+
+    
+        <div class="extra-nav download-button">
+            <a href="/kotlin-web-site-ja/#get-kotlin" class="get-kotlin-button">
+                Get Kotlin
+                <span class="version">(1.0.0-beta-1103)</span>
+            </a>
+        </div>
+    
+
+    <div id="global-search" class=" global-search" title="Search">
+    <div class="search-button">
+        <div class="icon"></div>
+    </div>
+    <div class="search-box">
+        <div class="gcse-searchbox-only"
+             data-resultsUrl="/search.html"
+             data-newWindow="false"
+        ></div>
+    </div>
+</div>
+</nav>
+
+        </div>
+    </div>
+    
+    <div class="g-layout">
+        
+    </div>
+</header>
+
+    <div class="g-layout global-content">
+        <div class="g-grid">
+
+    <div class="g-12">
+        
+    
+
+    <nav role="navigation" class="docs-nav">
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                    <a href="/kotlin-web-site-ja/docs/reference/" class="nav-item is_active">
+                        <span class="nav-item-text">
+                            Reference
+                        </span>
+                    </a>
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/" class="nav-item">
+                    <span class="nav-item-text">
+                        Tutorials
+                    </span>
+                </a>
+
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/videos.html" class="nav-item">
+                    <span class="nav-item-text">
+                        Videos
+                    </span>
+                </a>
+
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/events.html" class="nav-item">
+                    <span class="nav-item-text">
+                        Events
+                    </span>
+                </a>
+
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/resources.html" class="nav-item">
+                    <span class="nav-item-text">
+                        More resources
+                    </span>
+                </a>
+
+            
+            </div>
+        
+    </nav>
+
+
+    </div>
+
+    <aside class="g-3">
+        <div id="reference-nav">
+            
+
+
+
+
+
+<nav role="navigation" class="side-tree-nav">
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Getting Started">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Getting Started</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/basic-syntax.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Basic Syntax</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/idioms.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Idioms</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/coding-conventions.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Coding Conventions</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Basics">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Basics</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/basic-types.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Basic Types</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/packages.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Packages</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/control-flow.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Control Flow</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/returns.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Returns and Jumps</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Classes and Objects">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Classes and Objects</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/classes.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Classes and Inheritance</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/properties.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Properties and Fields</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/interfaces.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Interfaces</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/visibility-modifiers.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Visibility Modifiers</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/extensions.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Extensions</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/data-classes.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Data Classes</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/generics.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Generics</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/nested-classes.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Nested Classes</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/enum-classes.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Enum Classes</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/object-declarations.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Objects</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/delegation.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Delegation</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/delegated-properties.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Delegated Properties</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Functions and Lambdas">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Functions and Lambdas</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/functions.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Functions</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/lambdas.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Lambdas</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/inline-functions.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Inline Functions</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Other">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Other</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/multi-declarations.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Multi-Declarations</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/ranges.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Ranges</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/typecasts.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Type Checks and Casts</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/this-expressions.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">This expressions</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/equality.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Equality</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/operator-overloading.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Operator overloading</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/null-safety.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Null Safety</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/exceptions.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Exceptions</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/annotations.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Annotations</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/reflection.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Reflection</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/type-safe-builders.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Type-Safe Builders</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/dynamic-type.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Dynamic Type</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Reference">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Reference</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/api/latest/jvm/stdlib/index.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">API Reference</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/grammar.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Grammar</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _opened"
+         data-id="Interop">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Interop</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <div class="tree-item-title tree-leaf-title js-item-title js-leaf-title is_active">
+                    <div class="marker"></div>
+                    <div class="text">Java Interop</div>
+                </div>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Tools">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Tools</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/kotlin-doc.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Documenting Kotlin Code</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/using-maven.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Using Maven</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/using-ant.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Using Ant</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/using-gradle.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Using Gradle</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/kotlin-osgi.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Kotlin and OSGi</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="FAQ">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">FAQ</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/faq.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">FAQ</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/comparison-to-java.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Comparison to Java</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/comparison-to-scala.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Comparison to Scala</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+</nav>
+
+            <a href="/docs/kotlin-docs.pdf" class="reference-pdf-link">
+                <span class="icon"></span>
+                <span class="text">Full Kotlin Reference</span>
+            </a>
+        </div>
+    </aside>
+
+    <article role="main" class="page-content g-9">
+        
+
+
+<a href="https://github.com/dogwood008/kotlin-web-site-ja/edit/master/docs/reference/java-interop.md"
+   class="page-link-to-github"
+   target="_blank"
+   title="Edit this page on GitHub">
+        <i class="github-icon"></i>
+        <span class="text">Edit Page</span>
+</a>
+
+        <h1 id="java-interop">Java Interop<a href="#java-interop" class="anchor"></a></h1>
+
+<p>Kotlin is designed with Java Interoperability in mind. Existing Java code can be called from Kotlin in a natural way, and Kotlin code can be used from
+Java rather smoothly as well. In this section we describe some details about calling Java code from Kotlin.</p>
+
+<h2 id="calling-java-code-from-kotlin">Calling Java code from Kotlin<a href="#calling-java-code-from-kotlin" class="anchor"></a></h2>
+
+<p>Pretty much all Java code can be used without any issues</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">java.util.*</span>
+
+<span class="k">fun</span> <span class="nf">demo</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;)</span> <span class="p">{</span>
+  <span class="k">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;()</span>
+  <span class="c1">// &#39;for&#39;-loops work for Java collections:</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">source</span><span class="p">)</span>
+    <span class="n">list</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+  <span class="c1">// Operator conventions work as well:</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">0.</span><span class="p">.</span><span class="n">source</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">-</span> <span class="m">1</span><span class="p">)</span>
+    <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">source</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1">// get and set are called</span>
+<span class="p">}</span></code></pre>
+
+<h3 id="getters-and-setters">Getters and Setters<a href="#getters-and-setters" class="anchor"></a></h3>
+
+<p>Methods that follow the Java conventions for getters and setters (no-argument methods with names starting with <code>get</code>
+and single-argument methods with names starting with <code>set</code>) are represented as properties in Kotlin. For example:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">java.util.Calendar</span>
+
+<span class="k">fun</span> <span class="nf">calendarDemo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">calendar</span> <span class="p">=</span> <span class="n">Calendar</span><span class="p">.</span><span class="n">getInstance</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">calendar</span><span class="p">.</span><span class="n">firstDayOfWeek</span> <span class="p">==</span> <span class="n">Calendar</span><span class="p">.</span><span class="n">SUNDAY</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// call getFirstDayOfWeek()</span>
+        <span class="n">calendar</span><span class="p">.</span><span class="n">firstDayOfWeek</span> <span class="p">=</span> <span class="n">Calendar</span><span class="p">.</span><span class="n">MONDAY</span>       <span class="c1">// call setFirstDayOfWeek()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+
+<p>Note that, if the Java class only has a setter, it will not be visible as a property in Kotlin, because Kotlin does not support set-only properties at this time.</p>
+
+<h3 id="methods-returning-void">Methods returning void<a href="#methods-returning-void" class="anchor"></a></h3>
+
+<p>If a Java method returns void, it will return <code>Unit</code> when called from Kotlin.
+If, by any chance, someone uses that return value, it will be assigned at the call site by the Kotlin compiler,
+since the value itself is known in advance (being <code>Unit</code>).</p>
+
+<h3 id="escaping-for-java-identifiers-that-are-keywords-in-kotlin">Escaping for Java identifiers that are keywords in Kotlin<a href="#escaping-for-java-identifiers-that-are-keywords-in-kotlin" class="anchor"></a></h3>
+
+<p>Some of the Kotlin keywords are valid identifiers in Java: <em class="keyword">in</em>, <em class="keyword">object</em>, <em class="keyword">is</em>, etc.
+If a Java library uses a Kotlin keyword for a method, you can still call the method
+escaping it with the backtick (`) character</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="n">foo</span><span class="p">.</span><span class="n">`is`</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span></code></pre>
+
+<h3 id="null-safety-and-platform-types">Null-Safety and Platform Types<a href="#null-safety-and-platform-types" class="anchor"></a></h3>
+
+<p>Any reference in Java may be <em class="keyword">null</em>, which makes Kotlin’s requirements of strict null-safety impractical for objects coming from Java.
+Types of Java declarations are treated specially in Kotlin and called <em>platform types</em>. Null-checks are relaxed for such types,
+so that safety guarantees for them are the same as in Java (see more <a href="#mapped-types">below</a>).</p>
+
+<p>Consider the following examples:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;()</span> <span class="c1">// non-null (constructor result)</span>
+<span class="n">list</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;Item&quot;</span><span class="p">)</span>
+<span class="k">val</span> <span class="py">size</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="c1">// non-null (primitive int)</span>
+<span class="k">val</span> <span class="py">item</span> <span class="p">=</span> <span class="n">list</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="c1">// platform type inferred (ordinary Java object)</span></code></pre>
+
+<p>When we call methods on variables of platform types, Kotlin does not issue nullability errors at compile time,
+but the call may fail at runtime, because of a null-pointer exception or an assertion that Kotlin generates to
+prevent nulls from propagating:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="n">item</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1">// allowed, may throw an exception if item == null</span></code></pre>
+
+<p>Platform types are <em>non-denotable</em>, meaning that one can not write them down explicitly in the language.
+When a platform value is assigned to a Kotlin variable, we can rely on type inference (the variable will have an inferred platform type then,
+ as <code>item</code> has in the example above), or we can choose the type that we expect (both nullable and non-null types are allowed):</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">nullable</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">item</span> <span class="c1">// allowed, always works</span>
+<span class="k">val</span> <span class="py">notNull</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="n">item</span> <span class="c1">// allowed, may fail at runtime</span></code></pre>
+
+<p>If we choose a non-null type, the compiler will emit an assertion upon assignment. This prevents Kotlin’s non-null variables from holding
+nulls. Assertions are also emitted when we pass platform values to Kotlin functions expecting non-null values etc.
+Overall, the compiler does its best to prevent nulls from propagating far through the program (although sometimes this is
+impossible to eliminate entirely, because of generics).</p>
+
+<h4 id="notation-for-platform-types">Notation for Platform Types</h4>
+
+<p>As mentioned above, platform types cannot be mentioned explicitly in the program, so there’s no syntax for them in the language.
+Nevertheless, the compiler and IDE need to display them sometimes (in error messages, parameter info etc), so we have a
+mnemonic notation for them:</p>
+
+<ul>
+  <li><code>T!</code> means “<code>T</code> or <code>T?</code>”,</li>
+  <li><code>(Mutable)Collection&lt;T&gt;!</code> means “Java collection of <code>T</code> may be mutable or not, may be nullable or not”,</li>
+  <li><code>Array&lt;(out) T&gt;!</code> means “Java array of <code>T</code> (or a subtype of <code>T</code>), nullable or not”</li>
+</ul>
+
+<h4 id="nullability-annotations">Nullability annotations</h4>
+
+<p>Java types which have nullability annotations are represented not as platform types, but as actual nullable or non-null
+Kotlin types. Currently, the compiler supports the <a href="https://www.jetbrains.com/idea/help/nullable-and-notnull-annotations.html">JetBrains flavor of the nullability annotations</a>
+(<code>@Nullable</code> and <code>@NotNull</code> from the <code>org.jetbrains.annotations</code> package).</p>
+
+<h3 id="mapped-types">Mapped types<a href="#mapped-types" class="anchor"></a></h3>
+
+<p>Kotlin treats some Java types specially. Such types are not loaded from Java “as is”, but are <em>mapped</em> to corresponding Kotlin types.
+The mapping only matters at compile time, the runtime representation remains unchanged.
+ Java’s primitive types are mapped to corresponding Kotlin types (keeping <a href="#platform-types">platform types</a> in mind):</p>
+
+<table class="zebra">
+  <thead>
+    <tr>
+      <th><strong>Java type</strong></th>
+      <th><strong>Kotlin type</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>byte</code></td>
+      <td><code>kotlin.Byte</code></td>
+    </tr>
+    <tr>
+      <td><code>short</code></td>
+      <td><code>kotlin.Short</code></td>
+    </tr>
+    <tr>
+      <td><code>int</code></td>
+      <td><code>kotlin.Int</code></td>
+    </tr>
+    <tr>
+      <td><code>long</code></td>
+      <td><code>kotlin.Long</code></td>
+    </tr>
+    <tr>
+      <td><code>char</code></td>
+      <td><code>kotlin.Char</code></td>
+    </tr>
+    <tr>
+      <td><code>float</code></td>
+      <td><code>kotlin.Float</code></td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td><code>kotlin.Double</code></td>
+    </tr>
+    <tr>
+      <td><code>boolean</code></td>
+      <td><code>kotlin.Boolean</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Some non-primitive built-in classes are also mapped:</p>
+
+<table class="zebra">
+  <thead>
+    <tr>
+      <th><strong>Java type</strong></th>
+      <th><strong>Kotlin type</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>java.lang.Object</code></td>
+      <td><code>kotlin.Any!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Cloneable</code></td>
+      <td><code>kotlin.Cloneable!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Comparable</code></td>
+      <td><code>kotlin.Comparable!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Enum</code></td>
+      <td><code>kotlin.Enum!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Annotation</code></td>
+      <td><code>kotlin.Annotation!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Deprecated</code></td>
+      <td><code>kotlin.Deprecated!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Void</code></td>
+      <td><code>kotlin.Nothing!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.CharSequence</code></td>
+      <td><code>kotlin.CharSequence!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.String</code></td>
+      <td><code>kotlin.String!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Number</code></td>
+      <td><code>kotlin.Number!</code></td>
+    </tr>
+    <tr>
+      <td><code>java.lang.Throwable</code></td>
+      <td><code>kotlin.Throwable!</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Collection types may be read-only or mutable in Kotlin, so Java’s collections are mapped as follows
+(all Kotlin types in this table reside in the package <code>kotlin</code>):</p>
+
+<table class="zebra">
+  <thead>
+    <tr>
+      <th><strong>Java type</strong></th>
+      <th><strong>Kotlin read-only type</strong></th>
+      <th><strong>Kotlin mutable type</strong></th>
+      <th><strong>Loaded platform type</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Iterator&lt;T&gt;</code></td>
+      <td><code>Iterator&lt;T&gt;</code></td>
+      <td><code>MutableIterator&lt;T&gt;</code></td>
+      <td><code>(Mutable)Iterator&lt;T&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>Iterable&lt;T&gt;</code></td>
+      <td><code>Iterable&lt;T&gt;</code></td>
+      <td><code>MutableIterable&lt;T&gt;</code></td>
+      <td><code>(Mutable)Iterable&lt;T&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>Collection&lt;T&gt;</code></td>
+      <td><code>Collection&lt;T&gt;</code></td>
+      <td><code>MutableCollection&lt;T&gt;</code></td>
+      <td><code>(Mutable)Collection&lt;T&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>Set&lt;T&gt;</code></td>
+      <td><code>Set&lt;T&gt;</code></td>
+      <td><code>MutableSet&lt;T&gt;</code></td>
+      <td><code>(Mutable)Set&lt;T&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>List&lt;T&gt;</code></td>
+      <td><code>List&lt;T&gt;</code></td>
+      <td><code>MutableList&lt;T&gt;</code></td>
+      <td><code>(Mutable)List&lt;T&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>ListIterator&lt;T&gt;</code></td>
+      <td><code>ListIterator&lt;T&gt;</code></td>
+      <td><code>MutableListIterator&lt;T&gt;</code></td>
+      <td><code>(Mutable)ListIterator&lt;T&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>Map&lt;K, V&gt;</code></td>
+      <td><code>Map&lt;K, V&gt;</code></td>
+      <td><code>MutableMap&lt;K, V&gt;</code></td>
+      <td><code>(Mutable)Map&lt;K, V&gt;!</code></td>
+    </tr>
+    <tr>
+      <td><code>Map.Entry&lt;K, V&gt;</code></td>
+      <td><code>Map.Entry&lt;K, V&gt;</code></td>
+      <td><code>MutableMap.MutableEntry&lt;K,V&gt;</code></td>
+      <td><code>(Mutable)Map.(Mutable)Entry&lt;K, V&gt;!</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Java’s arrays are mapped as mentioned <a href="java-interop.html#java-arrays">below</a>:</p>
+
+<table class="zebra">
+  <thead>
+    <tr>
+      <th><strong>Java type</strong></th>
+      <th><strong>Kotlin type</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>int[]</code></td>
+      <td><code>kotlin.IntArray!</code></td>
+    </tr>
+    <tr>
+      <td><code>String[]</code></td>
+      <td><code>kotlin.Array&lt;(out) String&gt;!</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="java-generics-in-kotlin">Java generics in Kotlin<a href="#java-generics-in-kotlin" class="anchor"></a></h3>
+
+<p>Kotlin’s generics are a little different from Java’s (see <a href="generics.html">Generics</a>). When importing Java types to Kotlin we perform some conversions:</p>
+
+<ul>
+  <li>Java’s wildcards are converted into type projections
+    <ul>
+      <li><code>Foo&lt;? extends Bar&gt;</code> becomes <code>Foo&lt;out Bar!&gt;!</code></li>
+      <li><code>Foo&lt;? super Bar&gt;</code> becomes <code>Foo&lt;in Bar!&gt;!</code></li>
+    </ul>
+  </li>
+  <li>Java’s raw types are converted into star projections
+    <ul>
+      <li><code>List</code> becomes <code>List&lt;*&gt;!</code>, i.e. <code>List&lt;out Any?&gt;!</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Like Java’s, Kotlin’s generics are not retained at runtime, i.e. objects do not carry information about actual type arguments passed to their constructors,
+i.e. <code>ArrayList&lt;Integer&gt;()</code> is indistinguishable from <code>ArrayList&lt;Character&gt;()</code>.
+This makes it impossible to perform <em class="keyword">is</em>-checks that take generics into account.
+Kotlin only allows <em class="keyword">is</em>-checks for star-projected generic types:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="k">is</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;)</span> <span class="c1">// Error: cannot check if it is really a List of Ints</span>
+<span class="c1">// but</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="k">is</span> <span class="n">List</span><span class="p">&lt;*&gt;)</span> <span class="c1">// OK: no guarantees about the contents of the list</span></code></pre>
+
+<h3 id="java-arrays">Java Arrays<a href="#java-arrays" class="anchor"></a></h3>
+
+<p>Arrays in Kotlin are invariant, unlike Java. This means that Kotlin does not let us assign an <code>Array&lt;String&gt;</code> to an <code>Array&lt;Any&gt;</code>,
+which prevents a possible runtime failure. Passing an array of a subclass as an array of superclass to a Kotlin method is also prohibited,
+but for Java methods this is allowed (though <a href="#platform-types">platform types</a> of the form <code>Array&lt;(out) String&gt;!</code>).</p>
+
+<p>Arrays are used with primitive datatypes on the Java platform to avoid the cost of boxing/unboxing operations.
+As Kotlin hides those implementation details, a workaround is required to interface with Java code.
+There are specialized classes for every type of primitive array (<code>IntArray</code>, <code>DoubleArray</code>, <code>CharArray</code>, and so on) to handle this case.
+They are not related to the <code>Array</code> class and are compiled down to Java’s primitive arrays for maximum performance.</p>
+
+<p>Suppose there is a Java method that accepts an int array of indices:</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JavaArrayExample</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeIndices</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">indices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// code here...</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+
+<p>To pass an array of primitive values you can do the following in Kotlin:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">javaObj</span> <span class="p">=</span> <span class="n">JavaArrayExample</span><span class="p">()</span>
+<span class="k">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">javaObj</span><span class="p">.</span><span class="n">removeIndices</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>  <span class="c1">// passes int[] to method</span></code></pre>
+
+<p>Java classes sometimes use a method declaration for the indices with a variable number of arguments (varargs).</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JavaArrayExample</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeIndices</span><span class="o">(</span><span class="kt">int</span><span class="o">...</span> <span class="n">indices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// code here...</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+
+<p>In that case you need to use the spread operator <code>*</code> to pass the <code>IntArray</code>:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">javaObj</span> <span class="p">=</span> <span class="n">JavaArray</span><span class="p">()</span>
+<span class="k">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">javaObj</span><span class="p">.</span><span class="n">removeIndicesVarArg</span><span class="p">(*</span><span class="n">array</span><span class="p">)</span></code></pre>
+
+<p>It’s currently not possible to pass <em class="keyword">null</em> to a method that is declared as varargs.</p>
+
+<p>When compiling to JVM byte codes, the compiler optimizes access to arrays so that there’s no overhead introduced:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">array</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<span class="n">array</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="p">*</span> <span class="m">2</span> <span class="c1">// no actual calls to get() and set() generated</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span> <span class="c1">// no iterator created</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre>
+
+<p>Even when we navigate with an index, it does not introduce any overhead</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="n">indices</span><span class="p">)</span> <span class="c1">// no iterator created</span>
+  <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">+=</span> <span class="m">2</span></code></pre>
+
+<p>Finally, <em class="keyword">in</em>-checks have no overhead either</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="n">indices</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// same as (i &gt;= 0 &amp;&amp; i &lt; array.size)</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span></code></pre>
+
+<h3 id="operators">Operators<a href="#operators" class="anchor"></a></h3>
+
+<p>Since Java has no way of marking methods for which it makes sense to use the operator syntax, Kotlin allows using any
+Java methods with the right name and signature as operator overloads and other conventions (<code>invoke()</code> etc.)
+Calling Java methods using the infix call syntax is not allowed.</p>
+
+<h3 id="checked-exceptions">Checked Exceptions<a href="#checked-exceptions" class="anchor"></a></h3>
+
+<p>In Kotlin, all exceptions are unchecked, meaning that the compiler does not force you to catch any of them.
+So, when you call a Java method that declares a checked exception, Kotlin does not force you to do anything:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">render</span><span class="p">(</span><span class="n">list</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;*&gt;,</span> <span class="n">to</span><span class="p">:</span> <span class="n">Appendable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">list</span><span class="p">)</span>
+    <span class="n">to</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span> <span class="c1">// Java would require us to catch IOException here</span>
+<span class="p">}</span></code></pre>
+
+<h3 id="object-methods">Object Methods<a href="#object-methods" class="anchor"></a></h3>
+
+<p>When Java types are imported into Kotlin, all the references of the type <code>java.lang.Object</code> are turned into <code>Any</code>.
+Since <code>Any</code> is not platform-specific, it only declares <code>toString()</code>, <code>hashCode()</code> and <code>equals()</code> as its members,
+so to make other members of <code>java.lang.Object</code> available, Kotlin uses <a href="extensions.html">extension functions</a>.</p>
+
+<h4 id="waitnotify">wait()/notify()</h4>
+
+<p><a href="http://www.oracle.com/technetwork/java/effectivejava-136174.html">Effective Java</a> Item 69 kindly suggests to prefer concurrency utilities to <code>wait()</code> and <code>notify()</code>.
+Thus, these methods are not available on references of type <code>Any</code>.
+If you really need to call them, you can cast to <code>java.lang.Object</code>:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="p">(</span><span class="n">foo</span> <span class="k">as</span> <span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Object</span><span class="p">).</span><span class="n">wait</span><span class="p">()</span></code></pre>
+
+<h4 id="getclass">getClass()</h4>
+
+<p>To retrieve the type information from an object, we use the javaClass extension property.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">fooClass</span> <span class="p">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">javaClass</span></code></pre>
+
+<p>Instead of Java’s <code>Foo.class</code> use Foo::class.java.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">fooClass</span> <span class="p">=</span> <span class="n">Foo</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span></code></pre>
+
+<h4 id="clone">clone()</h4>
+
+<p>To override <code>clone()</code>, your class needs to extend <code>kotlin.Cloneable</code>:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Example</span> <span class="p">:</span> <span class="n">Cloneable</span> <span class="p">{</span>
+  <span class="k">override</span> <span class="k">fun</span> <span class="nf">clone</span><span class="p">():</span> <span class="n">Any</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="p">}</span></code></pre>
+
+<p>Do not forget about <a href="http://www.oracle.com/technetwork/java/effectivejava-136174.html">Effective Java</a>, Item 11: <em>Override clone judiciously</em>.</p>
+
+<h4 id="finalize">finalize()</h4>
+
+<p>To override <code>finalize()</code>, all you need to do is simply declare it, without using the <em class="keyword">override</em> keyword:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">C</span> <span class="p">{</span>
+  <span class="k">protected</span> <span class="k">fun</span> <span class="nf">finalize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// finalization logic</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+
+<p>According to Java’s rules, <code>finalize()</code> must not be <em class="keyword">private</em>.</p>
+
+<h3 id="inheritance-from-java-classes">Inheritance from Java classes<a href="#inheritance-from-java-classes" class="anchor"></a></h3>
+
+<p>At most one Java-class (and as many Java interfaces as you like) can be a supertype for a class in Kotlin.</p>
+
+<h3 id="accessing-static-members">Accessing static members<a href="#accessing-static-members" class="anchor"></a></h3>
+
+<p>Static members of Java classes form “companion objects” for these classes. We cannot pass such a “companion object” around as a value,
+but can access the members explicitly, for example</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">if</span> <span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="n">isLetter</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span></code></pre>
+
+<h3 id="java-reflection">Java Reflection<a href="#java-reflection" class="anchor"></a></h3>
+
+<p>Java reflection works on Kotlin classes and vice versa. As mentioned above, you can use <code>instance.javaClass</code> or 
+<code>ClassName::class.java</code> to enter Java reflection through <code>java.lang.Class</code>.</p>
+
+<p>Other supported cases include acquiring a Java getter/setter method or a backing field for a Kotlin property, a <code>KProperty</code> for a Java field, a Java method or constructor for a <code>KFunction</code> and vice versa.</p>
+
+<h3 id="sam-conversions">SAM Conversions<a href="#sam-conversions" class="anchor"></a></h3>
+
+<p>Just like Java 8, Kotlin supports SAM conversions. This means that Kotlin function literals can be automatically converted
+into implementations of Java interfaces with a single non-default method, as long as the parameter types of the interface
+method match the parameter types of the Kotlin function.</p>
+
+<p>You can use this for creating instances of SAM interfaces:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">runnable</span> <span class="p">=</span> <span class="n">Runnable</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;This runs in a runnable&quot;</span><span class="p">)</span> <span class="p">}</span></code></pre>
+
+<p>…and in method calls:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">executor</span> <span class="p">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span>
+<span class="c1">// Java signature: void execute(Runnable command)</span>
+<span class="n">executor</span><span class="p">.</span><span class="n">execute</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;This runs in a thread pool&quot;</span><span class="p">)</span> <span class="p">}</span></code></pre>
+
+<p>If the Java class has multiple methods taking functional interfaces, you can choose the one you need to call by
+using an adapter function that converts a lambda to a specific SAM type. Those adapter functions are also generated
+by the compiler when needed.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="n">executor</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Runnable</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;This runs in a thread pool&quot;</span><span class="p">)</span> <span class="p">})</span></code></pre>
+
+<p>Note that SAM conversions only work for interfaces, not for abstract classes, even if those also have just a single
+abstract method.</p>
+
+<p>Also note that this feature works only for Java interop; since Kotlin has proper function types, automatic conversion
+of functions into implementations of Kotlin interfaces is unnecessary and therefore unsupported.</p>
+
+<h2 id="calling-kotlin-code-from-java">Calling Kotlin code from Java<a href="#calling-kotlin-code-from-java" class="anchor"></a></h2>
+
+<p>Kotlin code can be called from Java easily.</p>
+
+<h3 id="properties">Properties<a href="#properties" class="anchor"></a></h3>
+
+<p>Property getters are turned into <em>get</em>-methods, and setters – into <em>set</em>-methods.</p>
+
+<h3 id="package-level-functions">Package-Level Functions<a href="#package-level-functions" class="anchor"></a></h3>
+
+<p>All the functions and properties declared in a file <code>example.kt</code> inside a package <code>org.foo.bar</code> are put into a Java
+class named <code>org.foo.bar.ExampleKt</code>.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// example.kt</span>
+<span class="k">package</span> <span class="nn">demo</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+
+<span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre>
+
+<pre><code class="code-block _highlighted lang_java"><span class="c1">// Java</span>
+<span class="k">new</span> <span class="n">demo</span><span class="o">.</span><span class="na">Foo</span><span class="o">();</span>
+<span class="n">demo</span><span class="o">.</span><span class="na">ExampleKt</span><span class="o">.</span><span class="na">bar</span><span class="o">();</span></code></pre>
+
+<p>The name of the generated Java class can be changed using the <code>@JvmName</code> annotation:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="n">@file</span><span class="p">:</span><span class="n">JvmName</span><span class="p">(</span><span class="s">&quot;DemoUtils&quot;</span><span class="p">)</span>
+
+<span class="k">package</span> <span class="nn">demo</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+
+<span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre>
+
+<pre><code class="code-block _highlighted lang_java"><span class="c1">// Java</span>
+<span class="k">new</span> <span class="n">demo</span><span class="o">.</span><span class="na">Foo</span><span class="o">();</span>
+<span class="n">demo</span><span class="o">.</span><span class="na">DemoUtils</span><span class="o">.</span><span class="na">bar</span><span class="o">();</span></code></pre>
+
+<p>Having multiple files which have the same generated Java class name (the same package and the same name or the same
+@JvmName annotation) is normally an error. However, the compiler has the ability to generate a single Java facade
+class which has the specified name and contains all the declarations from all the files which have that name.
+To enable the generation of such a facade, use the @JvmMultifileClass annotation in all of the files.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// oldutils.kt</span>
+<span class="n">@file</span><span class="p">:</span><span class="n">JvmName</span><span class="p">(</span><span class="s">&quot;Utils&quot;</span><span class="p">)</span> 
+<span class="n">@file</span><span class="p">:</span><span class="n">JvmMultifileClass</span>
+
+<span class="k">package</span> <span class="nn">demo</span>
+
+<span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// newutils.kt</span>
+<span class="n">@file</span><span class="p">:</span><span class="n">JvmName</span><span class="p">(</span><span class="s">&quot;Utils&quot;</span><span class="p">)</span>
+<span class="n">@file</span><span class="p">:</span><span class="n">JvmMultifileClass</span>
+
+<span class="k">package</span> <span class="nn">demo</span>
+
+<span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre>
+
+<pre><code class="code-block _highlighted lang_java"><span class="c1">// Java</span>
+<span class="n">demo</span><span class="o">.</span><span class="na">Utils</span><span class="o">.</span><span class="na">foo</span><span class="o">();</span>
+<span class="n">demo</span><span class="o">.</span><span class="na">Utils</span><span class="o">.</span><span class="na">bar</span><span class="o">();</span></code></pre>
+
+<h3 id="fields">Fields<a href="#fields" class="anchor"></a></h3>
+
+<p>If you need to expose a Kotlin property as a field in Java, you need to annotate it with the <code>@JvmField</code> annotation.
+The field will have the same visibility as the underlying property. You can annotate a property with <code>@JvmField</code>
+if it has a backing field, is not private, does not have <code>open</code>, <code>override</code> or <code>const</code> modifiers, and is not a delegated property.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">@JvmField</span> <span class="k">val</span> <span class="py">ID</span> <span class="p">=</span> <span class="n">id</span>
+<span class="p">}</span></code></pre>
+
+<pre><code class="code-block _highlighted lang_java"><span class="c1">// Java</span>
+<span class="kd">class</span> <span class="nc">JavaClient</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getID</span><span class="o">(</span><span class="n">C</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">c</span><span class="o">.</span><span class="na">ID</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+
+<h3 id="static-methods-and-fields">Static Methods and Fields<a href="#static-methods-and-fields" class="anchor"></a></h3>
+
+<p>As mentioned above, Kotlin generates static methods for package-level functions. On top of that, it also generates static methods
+for functions defined in named objects or companion objects of classes and annotated as <code>@JvmStatic</code>. For example:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">C</span> <span class="p">{</span>
+  <span class="n">companion</span> <span class="k">object</span> <span class="err">{</span>
+    <span class="n">@JvmStatic</span> <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+
+<p>Now, <code>foo()</code> is static in Java, while <code>bar()</code> is not:</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="n">C</span><span class="o">.</span><span class="na">foo</span><span class="o">();</span> <span class="c1">// works fine</span>
+<span class="n">C</span><span class="o">.</span><span class="na">bar</span><span class="o">();</span> <span class="c1">// error: not a static method</span></code></pre>
+
+<p>Same for named objects:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">object</span> <span class="nc">Obj</span> <span class="p">{</span>
+    <span class="n">@JvmStatic</span> <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span></code></pre>
+
+<p>In Java:</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="n">Obj</span><span class="o">.</span><span class="na">foo</span><span class="o">();</span> <span class="c1">// works fine</span>
+<span class="n">Obj</span><span class="o">.</span><span class="na">bar</span><span class="o">();</span> <span class="c1">// error</span>
+<span class="n">Obj</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">.</span><span class="na">bar</span><span class="o">();</span> <span class="c1">// works, a call through the singleton instance</span>
+<span class="n">Obj</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">.</span><span class="na">foo</span><span class="o">();</span> <span class="c1">// works too</span></code></pre>
+
+<p>Also, public properties defined in objects and companion objects, as well as top-level properties annotated with <code>const</code>,
+are turned into static fields in Java:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// file example.kt</span>
+
+<span class="k">object</span> <span class="nc">Obj</span> <span class="p">{</span>
+  <span class="k">val</span> <span class="py">CONST</span> <span class="p">=</span> <span class="m">1</span>
+<span class="p">}</span>
+
+<span class="n">const</span> <span class="k">val</span> <span class="py">MAX</span> <span class="p">=</span> <span class="m">239</span></code></pre>
+
+<p>In Java:</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Obj</span><span class="o">.</span><span class="na">CONST</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">ExampleKt</span><span class="o">.</span><span class="na">MAX</span><span class="o">;</span></code></pre>
+
+<h3 id="handling-signature-clashes-with-jvmname">Handling signature clashes with @JvmName<a href="#handling-signature-clashes-with-jvmname" class="anchor"></a></h3>
+
+<p>Sometimes we have a named function in Kotlin, for which we need a different JVM name the byte code.
+The most prominent example happens due to <em>type erasure</em>:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;.</span><span class="n">filterValid</span><span class="p">():</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;</span>
+<span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;.</span><span class="n">filterValid</span><span class="p">():</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;</span></code></pre>
+
+<p>These two functions can not be defined side-by-side, because their JVM signatures are the same: <code>filterValid(Ljava/util/List;)Ljava/util/List;</code>.
+If we really want them to have the same name in Kotlin, we can annotate one (or both) of them with <code>@JvmName</code> and specify a different name as an argument:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;.</span><span class="n">filterValid</span><span class="p">():</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;</span>
+
+<span class="n">@JvmName</span><span class="p">(</span><span class="s">&quot;filterValidInt&quot;</span><span class="p">)</span>
+<span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;.</span><span class="n">filterValid</span><span class="p">():</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;</span></code></pre>
+
+<p>From Kotlin they will be accessible by the same name <code>filterValid</code>, but from Java it will be <code>filterValid</code> and <code>filterValidInt</code>.</p>
+
+<p>The same trick applies when we need to have a property <code>x</code> alongside with a function <code>getX()</code>:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">x</span><span class="p">:</span> <span class="n">Int</span>
+  <span class="n">@JvmName</span><span class="p">(</span><span class="s">&quot;getX_prop&quot;</span><span class="p">)</span>
+  <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="m">15</span>
+
+<span class="k">fun</span> <span class="nf">getX</span><span class="p">()</span> <span class="p">=</span> <span class="m">10</span></code></pre>
+
+<h3 id="overloads-generation">Overloads Generation<a href="#overloads-generation" class="anchor"></a></h3>
+
+<p>Normally, if you write a Kotlin method with default parameter values, it will be visible in Java only as a full
+signature, with all parameters present. If you wish to expose multiple overloads to Java callers, you can use the
+@JvmOverloads annotation.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="n">@JvmOverloads</span> <span class="k">fun</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span></code></pre>
+
+<p>For every parameter with a default value, this will generate one additional overload, which has this parameter and
+all parameters to the right of it in the parameter list removed. In this example, the following methods will be
+generated:</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="c1">// Java</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="o">(</span><span class="n">String</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">,</span> <span class="n">String</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="o">(</span><span class="n">String</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="o">(</span><span class="n">String</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span></code></pre>
+
+<p>The annotation also works for constructors, static methods etc. It can’t be used on abstract methods, including methods
+defined in interfaces.</p>
+
+<p>Note that, as described in <a href="classes.html#secondary-constructors">Secondary Constructors</a>, if a class has default
+values for all constructor parameters, a public no-argument constructor will be generated for it. This works even
+if the @JvmOverloads annotation is not specified.</p>
+
+<h3 id="checked-exceptions-1">Checked Exceptions<a href="#checked-exceptions-1" class="anchor"></a></h3>
+
+<p>As we mentioned above, Kotlin does not have checked exceptions.
+So, normally, the Java signatures of Kotlin functions do not declare exceptions thrown.
+Thus if we have a function in Kotlin like this:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// example.kt</span>
+<span class="k">package</span> <span class="nn">demo</span>
+
+<span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="n">IOException</span><span class="p">()</span>
+<span class="p">}</span></code></pre>
+
+<p>And we want to call it from Java and catch the exception:</p>
+
+<pre><code class="code-block _highlighted lang_java"><span class="c1">// Java</span>
+<span class="k">try</span> <span class="o">{</span>
+  <span class="n">demo</span><span class="o">.</span><span class="na">Example</span><span class="o">.</span><span class="na">foo</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// error: foo() does not declare IOException in the throws list</span>
+  <span class="c1">// ...</span>
+<span class="o">}</span></code></pre>
+
+<p>we get an error message from the Java compiler, because <code>foo()</code> does not declare <code>IOException</code>.
+To work around this problem, use the <code>@Throws</code> annotation in Kotlin:</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="n">@Throws</span><span class="p">(</span><span class="n">IOException</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+<span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="n">IOException</span><span class="p">()</span>
+<span class="p">}</span></code></pre>
+
+<h3 id="null-safety">Null-safety<a href="#null-safety" class="anchor"></a></h3>
+
+<p>When calling Kotlin functions from Java, nobody prevents us from passing <em class="keyword">null</em> as a non-null parameter.
+That’s why Kotlin generates runtime checks for all public functions that expect non-nulls.
+This way we get a <code>NullPointerException</code> in the Java code immediately.</p>
+
+    </article>
+</div>
+
+<script>
+require(['page/reference'], function(page) {
+    page();
+});
+</script>
+    </div>
+
+</div>
+
+<footer role="contentinfo" class="global-footer">
+
+    <div class="global-footer-terms">
+        <div class="g-layout">
+
+            <div class="terms-copyright">
+                &copy; 2000&ndash;2015 JetBrains. All rights reserved
+            </div>
+
+            <div class="terms-sponsor">
+                Sponsored and developed by <a href="http://jetbrains.com" class="sponsor sponsor_jetbrains" target="_blank">JetBrains</a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script>require(['com/search']);</script>
+</body>
+</html>

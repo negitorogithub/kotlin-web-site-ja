@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie ie7" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie ie8" lang="en"><![endif]-->
+<!--[if (IE 9)&!(IEMobile)]><html class="no-js ie ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Working with the Command Line Compiler</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="Shortcut Icon" href="/kotlin-web-site-ja/assets/images/favicon.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon" href="/kotlin-web-site-ja/assets/images/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="/kotlin-web-site-ja/assets/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/kotlin-web-site-ja/assets/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/kotlin-web-site-ja/assets/images/apple-touch-icon-144x144.png" />
+<link rel="stylesheet" href="/kotlin-web-site-ja/css/styles.css">
+<script src="/kotlin-web-site-ja/js/vendor/requirejs/require.js"></script>
+<script src="/kotlin-web-site-ja/js/config/bootstrap.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5P98"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P98');</script>
+<!-- End Google Tag Manager -->
+<!-- CrazyEgg -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0013/6939.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- End CrazyEgg -->
+
+
+<div class="global-layout">
+
+    <header class="global-header">
+
+    <div class="global-header-panel">
+        <div class="g-layout">
+            <a class="global-header-logo" href="/kotlin-web-site-ja/">Kotlin</a>
+
+            
+
+            <nav role="navigation" class="global-nav">
+    
+
+    
+        
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <a href="/kotlin-web-site-ja/docs/reference/"
+           class="nav-item is_active"
+        >
+            Learn
+        </a>
+    
+        
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <a href="/kotlin-web-site-ja/contribute.html"
+           class="nav-item "
+        >
+            Contribute
+        </a>
+    
+        
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <a href="http://try.kotlinlang.org"
+           class="nav-item "
+        >
+            Try Online
+        </a>
+    
+        
+        
+        
+        
+
+        
+            
+
+    
+        <div class="extra-nav download-button">
+            <a href="/kotlin-web-site-ja/#get-kotlin" class="get-kotlin-button">
+                Get Kotlin
+                <span class="version">(1.0.0-beta-1103)</span>
+            </a>
+        </div>
+    
+
+    <div id="global-search" class=" global-search" title="Search">
+    <div class="search-button">
+        <div class="icon"></div>
+    </div>
+    <div class="search-box">
+        <div class="gcse-searchbox-only"
+             data-resultsUrl="/search.html"
+             data-newWindow="false"
+        ></div>
+    </div>
+</div>
+</nav>
+
+        </div>
+    </div>
+    
+    <div class="g-layout">
+        
+    </div>
+</header>
+
+    <div class="g-layout global-content">
+        <div class="g-grid">
+
+    <div class="g-12">
+        
+    
+
+    <nav role="navigation" class="docs-nav">
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/reference/" class="nav-item">
+                    <span class="nav-item-text">
+                        Reference
+                    </span>
+                </a>
+
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                    <a href="/kotlin-web-site-ja/docs/tutorials/" class="nav-item is_active">
+                        <span class="nav-item-text">
+                            Tutorials
+                        </span>
+                    </a>
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/videos.html" class="nav-item">
+                    <span class="nav-item-text">
+                        Videos
+                    </span>
+                </a>
+
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/events.html" class="nav-item">
+                    <span class="nav-item-text">
+                        Events
+                    </span>
+                </a>
+
+            
+            </div>
+        
+            
+            
+
+            <div class="nav-item-wrap">
+            
+                <a href="/kotlin-web-site-ja/docs/resources.html" class="nav-item">
+                    <span class="nav-item-text">
+                        More resources
+                    </span>
+                </a>
+
+            
+            </div>
+        
+    </nav>
+
+
+    </div>
+
+    <aside class="g-3">
+        <div id="tutorials-nav">
+            
+
+
+
+
+
+<nav role="navigation" class="side-tree-nav">
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _opened"
+         data-id="Getting Started">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Getting Started</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/getting-started.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Getting Started with IntelliJ IDEA</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/getting-started-eclipse.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Getting Started with Eclipse</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <div class="tree-item-title tree-leaf-title js-item-title js-leaf-title is_active">
+                    <div class="marker"></div>
+                    <div class="text">Working with the Command Line Compiler</div>
+                </div>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/build-tools.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Working with Build Tools</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/koans.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Koans</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="JavaScript">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">JavaScript</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/create-library-js.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Creating Kotlin/JavaScript library with IntelliJ IDEA</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/command-line-library-js.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Creating Kotlin/JavaScript library with the Command Line Compiler</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Interop">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Interop</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/mixing-java-kotlin-intellij.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Mixing Java and Kotlin in one project</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Web Development">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Web Development</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/httpservlets.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Creating Web Applications with Http Servlets</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/spring-boot-restful.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Creating a RESTful Web Service with Spring Boot</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Mobile">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Mobile</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/kotlin-android.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Getting Started With Android Development</span></a>
+            
+            </div>
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/android-plugin.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Kotlin Android Extensions</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+    
+
+    <div class="tree-item tree-branch js-item js-branch _closed"
+         data-id="Tools">
+
+        <div class="tree-item-title tree-branch-title js-item-title js-branch-title">
+            <div class="marker"></div>
+            <div class="text">Tools</div>
+        </div>
+
+        
+            
+            
+
+            
+            
+
+            <div class="tree-item tree-leaf js-item js-leaf">
+            
+                <a href="/kotlin-web-site-ja/docs/tutorials/kotlin-and-ci.html"
+                   class="tree-item-title tree-leaf-title js-item-title js-leaf-title "
+                   ><span class="marker"></span><span class="text">Setting up Kotlin on TeamCity</span></a>
+            
+            </div>
+        
+
+    </div>
+
+    
+
+</nav>
+        </div>
+    </aside>
+
+    <article role="main" class="page-content g-9">
+        
+
+
+<a href="https://github.com/dogwood008/kotlin-web-site-ja/edit/master/docs/tutorials/command-line.md"
+   class="page-link-to-github"
+   target="_blank"
+   title="Edit this page on GitHub">
+        <i class="github-icon"></i>
+        <span class="text">Edit Page</span>
+</a>
+
+        <h1>
+            Working with the Command Line Compiler
+        </h1>
+        <table>
+            
+            <tr>
+                <td>
+                    <strong>Author</strong>
+                </td>
+                <td>
+                    Hadi Hariri
+                </td>
+            </tr>
+            
+            
+            
+        </table>
+        
+            This tutorial walks us through creating a Hello World application using the command line compiler.
+        <br/>
+        <br/>
+        
+        <h3 id="downloading-the-compiler">Downloading the compiler<a href="#downloading-the-compiler" class="anchor"></a></h3>
+
+<p>Every release ships with a standalone version of the compiler. We can download it from <a href="https://github.com/JetBrains/kotlin/releases/tag/build-1.0.0-beta-1103">GitHub Releases</a>. The latest release is 1.0.0-beta-1103.</p>
+
+<p>Unzip the standalone compiler into a directory and optionally add the <code>bin</code> directory to the system path. The <code>bin</code> directory contains the scripts needed to compile and run Kotlin on Windows, OS X and Linux.</p>
+
+<p>Alternatively, on OS X you can install the compiler via <a href="http://brew.sh/">Homebrew</a>.</p>
+
+<pre>   $ brew update
+   $ brew install kotlin
+</pre>
+
+<h3 id="creating-and-running-a-first-application">Creating and running a first application<a href="#creating-and-running-a-first-application" class="anchor"></a></h3>
+
+<ol>
+  <li>
+    <p>Create a simple application in Kotlin that displays Hello, World!. Using our favorite editor, we create a new file called <em>hello.kt</em> with the following:</p>
+
+    <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre>
+  </li>
+  <li>
+    <p>Compile the application using the Kotlin compiler</p>
+
+    <pre>$ kotlinc hello.kt -include-runtime -d hello.jar
+</pre>
+
+    <p>The <code>-d</code> option indicates what we want the output of the compiler to be called and may be either a directory name for class files or a <em>.jar</em> file name. The <code>-include-runtime</code> option makes the resulting <em>.jar</em> file self-contained and runnable by including the Kotlin runtime library in it.
+If you want to see all available options run</p>
+
+    <pre>$ kotlinc -help
+</pre>
+  </li>
+  <li>
+    <p>Run the application.</p>
+
+    <pre>$ java -jar hello.jar
+</pre>
+  </li>
+</ol>
+
+<h3 id="compiling-a-library">Compiling a library<a href="#compiling-a-library" class="anchor"></a></h3>
+
+<p>If you’re developing a library to be used by other Kotlin applications, you can produce the .jar file without including the Kotlin runtime into it.</p>
+
+<pre>   $ kotlinc hello.kt -d hello.jar
+</pre>
+
+<p>Since binaries compiled this way depend on the Kotlin runtime you should make sure the latter is present in the classpath whenever your compiled library is used.</p>
+
+<p>You can also use the <code>kotlin</code> script to run binaries produced by the Kotlin compiler:</p>
+
+<pre>   $ kotlin -classpath hello.jar HelloKt
+</pre>
+
+<p><code>HelloKt</code> is the main class name that the Kotlin compiler generates for the file named <code>hello.kt</code>.</p>
+
+<h3 id="running-the-repl">Running the REPL<a href="#running-the-repl" class="anchor"></a></h3>
+
+<p>We can run the compiler without parameters to have an interactive shell. We can type any valid Kotlin code and see the results.</p>
+
+<p><img src="/kotlin-web-site-ja/assets/images/tutorials/command-line/kotlin_shell.png" alt="Shell" /></p>
+
+<h3 id="using-the-command-line-to-run-scripts">Using the command line to run scripts<a href="#using-the-command-line-to-run-scripts" class="anchor"></a></h3>
+
+<p>Kotlin can also be used as a scripting language. A script is a Kotlin source file (.kts) with top level executable code.</p>
+
+<pre><code class="code-block _highlighted lang_kotlin">   <span class="k">import</span> <span class="nn">java.io.File</span>
+
+   <span class="k">val</span> <span class="py">folders</span> <span class="p">=</span> <span class="n">File</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">0</span><span class="p">]).</span><span class="n">listFiles</span> <span class="p">{</span> <span class="n">file</span> <span class="p">-&gt;</span> <span class="n">file</span><span class="p">.</span><span class="n">isDirectory</span><span class="p">()</span> <span class="p">}</span>
+   <span class="n">folders</span><span class="o">?.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">folder</span> <span class="p">-&gt;</span> <span class="n">println</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="p">}</span></code></pre>
+
+<p>To run a script, we just pass the <code>-script</code> option to the compiler with the corresponding script file.</p>
+
+<pre>   $ kotlinc -script list_folders.kts &lt;path_to_folder_to_inspect&gt;
+</pre>
+
+
+    </article>
+</div>
+
+
+
+<script>require(['page/tutorials']);</script>
+    </div>
+
+</div>
+
+<footer role="contentinfo" class="global-footer">
+
+    <div class="global-footer-terms">
+        <div class="g-layout">
+
+            <div class="terms-copyright">
+                &copy; 2000&ndash;2015 JetBrains. All rights reserved
+            </div>
+
+            <div class="terms-sponsor">
+                Sponsored and developed by <a href="http://jetbrains.com" class="sponsor sponsor_jetbrains" target="_blank">JetBrains</a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script>require(['com/search']);</script>
+</body>
+</html>
