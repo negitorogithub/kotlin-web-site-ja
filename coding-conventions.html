@@ -1028,44 +1028,47 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="coding-conventions">Coding Conventions<a href="#coding-conventions" class="anchor"></a></h1>
+        <h1 id="section">コーディング規約<a href="#section" class="anchor"></a></h1>
 
-<p>This page contains the current coding style for the Kotlin language.</p>
+<p>このページにはKotlin言語の現在のコーディングスタイルが記述されている。</p>
 
-<h2 id="naming-style">Naming Style<a href="#naming-style" class="anchor"></a></h2>
-<p>If in doubt default to the Java Coding Conventions such as:</p>
+<h2 id="section-1">命名スタイル<a href="#section-1" class="anchor"></a></h2>
+<p>If in doubt default to the Java Coding Conventions such as:
+次のような標準のJavaのコード規約に疑念を抱いているなら：</p>
 
 <ul>
-  <li>use of camelCase for names (and avoid underscore in names)</li>
-  <li>types start with upper case</li>
-  <li>methods and properties start with lower case</li>
-  <li>use 4 space indentation</li>
-  <li>public functions should have documentation such that it appears in Kotlin Doc</li>
+  <li>キャメルケースの使用（そして命名でのアンダースコアの使用）</li>
+  <li>大文字で始まる型</li>
+  <li>メソッドとプロパティが小文字で始まる</li>
+  <li>4スペースインデント</li>
 </ul>
 
-<h2 id="colon">Colon<a href="#colon" class="anchor"></a></h2>
+<p>public関数はKotlinの書式でのドキュメンテーションがある。</p>
 
-<p>There is a space before colon where colon separates type and supertype and there’s no space where colon separates instance and type:</p>
+<h2 id="section-2">コロン<a href="#section-2" class="anchor"></a></h2>
+
+<p>コロンが型と継承元のセパレータとして使用される際は、一つ前にスペースが必要。
+一方、インスタンスと型のセパレータとして使用するときには、スペースは不要。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">interface</span> <span class="n">Foo</span><span class="p">&lt;</span><span class="k">out</span> <span class="n">T</span> <span class="p">:</span> <span class="n">Any</span><span class="p">&gt;</span> <span class="p">:</span> <span class="n">Bar</span> <span class="p">{</span>
     <span class="k">fun</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">):</span> <span class="n">T</span>
 <span class="p">}</span></code></pre>
 
-<h2 id="lambdas">Lambdas<a href="#lambdas" class="anchor"></a></h2>
+<h2 id="section-3">ラムダ<a href="#section-3" class="anchor"></a></h2>
 
-<p>In lambda expressions, spaces should be used around the curly braces, as well as around the arrow which separates the parameters
-from the body. Whenever possible, a lambda should be passed outside of parentheses.</p>
+<p>ラムダ式中では、スペースが波括弧の両内側に必要である。また、パラメータを本体と分かつアロー（-&gt;）も同様である。
+可能な際にはいつでも、ラムダは丸括弧に渡される。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">list</span><span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span> <span class="p">&gt;</span> <span class="m">10</span> <span class="p">}.</span><span class="n">map</span> <span class="p">{</span> <span class="n">element</span> <span class="p">-&gt;</span> <span class="n">element</span> <span class="p">*</span> <span class="m">2</span> <span class="p">}</span></code></pre>
 
-<p>In lambdas which are short and not nested, it’s recommended to use the <code>it</code> convention instead of declaring the parameter
-explicitly. In nested lambdas with parameters, parameters should be always declared explicitly.</p>
+<p>短くてネストされていない（入れ子でない）ラムダ内では、 パラメータを明示的に宣言する代わりに <code>it</code> 規約を使用することを推奨する。
+パラメータ付きのネストされたラムダ内では、パラメータは常に明示的に宣言されなければならない。</p>
 
-<h2 id="unit">Unit<a href="#unit" class="anchor"></a></h2>
+<h2 id="unit">ユニット (Unit)<a href="#unit" class="anchor"></a></h2>
 
-<p>If a function returns Unit, the return type should be omitted:</p>
+<p>関数がUnit型を返すなら、戻り値の型は除去される：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// &quot;: Unit&quot; is omitted here</span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// &quot;: Unit&quot;はここで除去される</span>
 
 <span class="p">}</span></code></pre>
 
