@@ -1028,14 +1028,14 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="properties-and-fields">Properties and Fields<a href="#properties-and-fields" class="anchor"></a></h1>
+        <h1 id="section">プロパティとフィールド<a href="#section" class="anchor"></a></h1>
 
-<h2 id="declaring-properties">Declaring Properties<a href="#declaring-properties" class="anchor"></a></h2>
+<h2 id="section-1">プロパティの宣言<a href="#section-1" class="anchor"></a></h2>
 
-<p>Classes in Kotlin can have properties.
-These can be declared as mutable, using the <em class="keyword">var</em> keyword or read-only using the <em class="keyword">val</em> keyword.</p>
+<p>Kotlinでのクラスはプロパティを持つことができる。
+<em class="keyword">var</em> キーワードでミュータブルとして宣言でき、 <em class="keyword">val</em> キーワードで読み取り専用として宣言できる</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">public</span> <span class="k">class</span> <span class="nc">Address</span> <span class="p">{</span> 
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">public</span> <span class="k">class</span> <span class="nc">Address</span> <span class="p">{</span>
   <span class="k">public</span> <span class="k">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="p">...</span>
   <span class="k">public</span> <span class="k">var</span> <span class="py">street</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="p">...</span>
   <span class="k">public</span> <span class="k">var</span> <span class="py">city</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="p">...</span>
@@ -1043,119 +1043,121 @@ These can be declared as mutable, using the <em class="keyword">var</em> keyword
   <span class="k">public</span> <span class="k">var</span> <span class="py">zip</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="p">...</span>
 <span class="p">}</span></code></pre>
 
-<p>To use a property, we simply refer to it by name, as if it were a field in Java:</p>
+<p>プロパティを使うにはJavaでのフィールでやるように、ただ単純に名前で参照するだけで良い：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">copyAddress</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">Address</span><span class="p">):</span> <span class="n">Address</span> <span class="p">{</span>
-  <span class="k">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">Address</span><span class="p">()</span> <span class="c1">// there&#39;s no &#39;new&#39; keyword in Kotlin</span>
-  <span class="n">result</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">address</span><span class="p">.</span><span class="n">name</span> <span class="c1">// accessors are called</span>
+  <span class="k">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">Address</span><span class="p">()</span> <span class="c1">// Kotlinには &#39;new&#39; キーワードがない</span>
+  <span class="n">result</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">address</span><span class="p">.</span><span class="n">name</span> <span class="c1">// アクセサが呼ばれる</span>
   <span class="n">result</span><span class="p">.</span><span class="n">street</span> <span class="p">=</span> <span class="n">address</span><span class="p">.</span><span class="n">street</span>
   <span class="c1">// ...</span>
   <span class="k">return</span> <span class="n">result</span>
 <span class="p">}</span></code></pre>
 
-<h2 id="getters-and-setters">Getters and Setters<a href="#getters-and-setters" class="anchor"></a></h2>
+<h2 id="section-2">ゲッターとセッター<a href="#section-2" class="anchor"></a></h2>
 
-<p>The full syntax for declaring a property is</p>
+<p>プロパティを宣言する完全な構文は</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="err">&lt;</span><span class="py">propertyName</span><span class="p">&gt;:</span> <span class="p">&lt;</span><span class="n">PropertyType</span><span class="p">&gt;</span> <span class="p">[=</span> <span class="p">&lt;</span><span class="n">property_initializer</span><span class="p">&gt;]</span>
   <span class="p">&lt;</span><span class="n">getter</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="n">setter</span><span class="p">&gt;</span></code></pre>
 
-<p>The initializer, getter and setter are optional. Property type is optional if it can be inferred from the initializer or from the base class member being overridden.</p>
+<p>イニシャライザであるゲッターとセッターは必須ではない。
+イニシャライザか基本クラスのメンバーからオーバライドされることが推測される場合は、プロパティの型はオプションである。</p>
 
-<p>Examples:</p>
+<p>例:</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="py">allByDefault</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="c1">// error: explicit initializer required, default getter and setter implied</span>
 <span class="k">var</span> <span class="py">initialized</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// has type Int, default getter and setter</span></code></pre>
 
-<p>The full syntax of a read-only property declaration differs from a mutable one in two ways: it starts with <code>val</code> instead of <code>var</code> and does not allow a setter:</p>
+<p>読み取り専用のプロパティ宣言の完全な構文は、ミュータブルのものと比べて2点異なる。
+<code>var</code> の代わりに <code>val</code> で始まるのと、セッターを認めないことである：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">simple</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="c1">// has type Int, default getter, must be initialized in constructor</span>
-<span class="k">val</span> <span class="py">inferredType</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// has type Int and a default getter</span></code></pre>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">simple</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="c1">// これはInt型を持ち、デフォルトのゲッターはコンストラクタ内で初期化されなければならない</span>
+<span class="k">val</span> <span class="py">inferredType</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// これはInt型とデフォルトのゲッターを持つ</span></code></pre>
 
-<p>We can write custom accessors, very much like ordinary functions, right inside a property declaration. Here’s an example of a custom getter:</p>
+<p>カスタムアクセサは普通の関数ととても似ており、プロパティの中に宣言することができる。
+これはカスタムゲッターの例である：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">isEmpty</span><span class="p">:</span> <span class="n">Boolean</span>
   <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">size</span> <span class="p">==</span> <span class="m">0</span></code></pre>
 
-<p>A custom setter looks like this:</p>
+<p>カスタムセッターはこのようになる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="py">stringRepresentation</span><span class="p">:</span> <span class="n">String</span>
   <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
   <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">setDataFromString</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1">// parses the string and assigns values to other properties</span>
+    <span class="n">setDataFromString</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1">// 文字列をパースし、値を他のプロパティへ代入する</span>
   <span class="p">}</span></code></pre>
 
-<p>By convention, the name of the setter parameter is <code>value</code>, but you can choose a different name if you prefer.</p>
+<p>慣例では、セッターのパラメータは <code>value</code> であるが、異なる名前が良いならそちらを選択することもできる。</p>
 
-<p>If you need to change the visibility of an accessor or to annotate it, but don’t need to change the default implementation,
-you can define the accessor without defining its body:</p>
+<p>アクセサの可視性を変えたりアノテーションを付けたりしたいときは、デフォルトの実装を変える必要はなく、本体を定義せずにアクセサを定義するすることができる：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="py">setterVisibility</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span> <span class="c1">// Initializer required, not a nullable type</span>
-  <span class="k">private</span> <span class="k">set</span> <span class="c1">// the setter is private and has the default implementation</span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="py">setterVisibility</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span> <span class="c1">// イニシャライザが必要、null許容型でない</span>
+  <span class="k">private</span> <span class="k">set</span> <span class="c1">// セッターはprivateでデフォルトの実装を持つ</span>
 
 <span class="k">var</span> <span class="py">setterWithAnnotation</span><span class="p">:</span> <span class="n">Any</span><span class="p">?</span>
-  <span class="n">@Inject</span> <span class="k">set</span> <span class="c1">// annotate the setter with Inject</span></code></pre>
+  <span class="n">@Inject</span> <span class="k">set</span> <span class="c1">// セッターを Inject でアノテーション付けする</span></code></pre>
 
-<h3 id="backing-fields">Backing Fields<a href="#backing-fields" class="anchor"></a></h3>
+<h3 id="backing-fields">バッキングフィールド（Backing Fields）<a href="#backing-fields" class="anchor"></a></h3>
 
-<p>Classes in Kotlin cannot have fields. However, sometimes it is necessary to have a backing field when using custom accessors. For these purposes, Kotlin provides
-an automatic backing field which can be accessed using the <code>field</code> identifier:</p>
+<p>Kotlinのクラスはフィールドを持つことができない。しかし、バッキングフィールドがカスタムアクセサを使用する際に時々必要になることがある。
+この目的のため、Kotlinは自動バッキングフィールドを提供する。このフィールドには <code>field</code> 識別子を使うとアクセス可能になる。</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="py">counter</span> <span class="p">=</span> <span class="m">0</span> <span class="c1">// the initializer value is written directly to the backing field</span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">var</span> <span class="py">counter</span> <span class="p">=</span> <span class="m">0</span> <span class="c1">// イニシャライザの値は直接バッキングフィールドへ書き込まれる</span>
   <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">)</span>
       <span class="n">field</span> <span class="p">=</span> <span class="n">value</span>
   <span class="p">}</span></code></pre>
 
-<p>The <code>field</code> identifier can only be used in the accessors of the property.</p>
+<p><code>field</code> 識別子はプロパティのアクセサのみで使用できる。</p>
 
-<p>The compiler looks at the accessors’ bodies, and if they use the backing field (or the accessor implementation is left by default), a backing field is generated, otherwise it is not.</p>
+<p>アクセサの本体や本体がバッキングフィールドを使用しているかどうか（またはアクセサの実装がデフォルトと異なっているか）をコンパイラは見て、バッキングフィールドが生成される。それ以外の場合はされない。</p>
 
-<p>For example, in the following case there will be no backing field:</p>
+<p>例えば、次の事例ではバッキングフィールドは存在しない：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">isEmpty</span><span class="p">:</span> <span class="n">Boolean</span>
   <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">size</span> <span class="p">==</span> <span class="m">0</span></code></pre>
 
-<h3 id="backing-properties">Backing Properties<a href="#backing-properties" class="anchor"></a></h3>
+<h3 id="section-3">バッキングプロパティ<a href="#section-3" class="anchor"></a></h3>
 
-<p>If you want to do something that does not fit into this “implicit backing field” scheme, you can always fall back to having a <em>backing property</em>:</p>
+<p>“暗黙的バッキングフィールド”にそぐわないことをやりたい場合には、 <em>backing property</em> を持つようにもできる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">private</span> <span class="k">var</span> <span class="py">_table</span><span class="p">:</span> <span class="n">Map</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="p">&gt;?</span> <span class="p">=</span> <span class="k">null</span>
 <span class="k">public</span> <span class="k">val</span> <span class="py">table</span><span class="p">:</span> <span class="n">Map</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="p">&gt;</span>
   <span class="k">get</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">_table</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-      <span class="n">_table</span> <span class="p">=</span> <span class="n">HashMap</span><span class="p">()</span> <span class="c1">// Type parameters are inferred</span>
+      <span class="n">_table</span> <span class="p">=</span> <span class="n">HashMap</span><span class="p">()</span> <span class="c1">// 型パラメータが推測される</span>
     <span class="k">return</span> <span class="n">_table</span> <span class="o">?:</span> <span class="k">throw</span> <span class="n">AssertionError</span><span class="p">(</span><span class="s">&quot;Set to null by another thread&quot;</span><span class="p">)</span>
   <span class="p">}</span></code></pre>
 
-<p>In all respects, this is just the same as in Java since access to private properties with default getters and setters is optimized so that no function call overhead is introduced.</p>
+<p>全ての点より、これはちょうどJavaと同じである。
+なぜなら、privateプロパティへデフォルトゲッターとセッターでアクセスし、セッターがオーバヘッド無しの関数呼び出しに最適化されているためである。</p>
 
-<h2 id="compile-time-constants">Compile-Time Constants<a href="#compile-time-constants" class="anchor"></a></h2>
+<h2 id="section-4">コンパイル時定数<a href="#section-4" class="anchor"></a></h2>
 
-<p>Properties the value of which is known at compile time can be marked as <em>compile time constants</em> using the <code>const</code> modifier.
-Such properties need to fulfil the following requirements:</p>
+<p>コンパイル時に把握されるプロパティの値は <code>const</code> 修飾子を使用して <em>compile time constants</em> としてマークすることができる。
+このようなプロパティは次の要件を満たす必要がある：</p>
 
 <ul>
-  <li>Top-level or member of an <code>object</code></li>
-  <li>Initialized with a value of type <code>String</code> or a primitive type</li>
-  <li>No custom getter</li>
+  <li>トップレベル、または <code>object</code> のメンバ</li>
+  <li><code>String</code> 型で初期化されるかプリミティブ型であること</li>
+  <li>カスタムゲッターが無いこと</li>
 </ul>
 
-<p>Such properties can be used in annotations:</p>
+<p>このプロパティはアノテーションで使用することができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">const</span> <span class="k">val</span> <span class="py">SUBSYSTEM_DEPRECATED</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;This subsystem is deprecated&quot;</span>
 
 <span class="n">@Deprecated</span><span class="p">(</span><span class="n">SUBSYSTEM_DEPRECATED</span><span class="p">)</span> <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span></code></pre>
 
-<h2 id="late-initialized-properties">Late-Initialized Properties<a href="#late-initialized-properties" class="anchor"></a></h2>
+<h2 id="section-5">遅延初期化プロパティ<a href="#section-5" class="anchor"></a></h2>
 
-<p>Normally, properties declared as having a non-null type must be initialized in the constructor.
-However, fairly often this is not convenient. For example, properties can be initialized through dependency injection,
-or in the setup method of a unit test. In this case, you cannot supply a non-null initializer in the constructor,
-but you still want to avoid null checks when referencing the property inside the body of a class.</p>
+<p>通常、非null型として宣言されたプロパティは、コンストラクタ内で初期化される必要がある。
+しかし、これはかなり不便である。例えば、プロパティが依存オブジェクト (dependency injection　訳注：<a href="http://blog.a-way-out.net/blog/2015/08/31/your-dependency-injection-is-wrong-as-I-expected/">参考</a>)により初期化されたり、ユニットテストのセットアップメソッドで初期化されたり。
+この事例では、非nullイニシャライザをコンストラクタ内で提供することができないが、それでもクラス内の本体にあるプロパティを参照する際にnullチェックを避けたいであろう。</p>
 
-<p>To handle this case, you can mark the property with the <code>lateinit</code> modifier:</p>
+<p>このような事例を処理するには、プロパティを <code>lateinit</code> 識別子でマークすることができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyTest</span> <span class="p">{</span>
     <span class="n">lateinit</span> <span class="k">var</span> <span class="py">subject</span><span class="p">:</span> <span class="n">TestSubject</span>
@@ -1165,31 +1167,27 @@ but you still want to avoid null checks when referencing the property inside the
     <span class="p">}</span>
 
     <span class="n">@Test</span> <span class="k">fun</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">subject</span><span class="p">.</span><span class="n">method</span><span class="p">()</span>  <span class="c1">// dereference directly</span>
+        <span class="n">subject</span><span class="p">.</span><span class="n">method</span><span class="p">()</span>  <span class="c1">// 直接、逆参照する</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>The modifier can only be used on <code>var</code> properties declared inside the body of a class (not in the primary constructor), and only
-when the property does not have a custom getter or setter. The type of the property must be non-null, and it must not be
-a primitive type.</p>
+<p>この識別子はクラス本体（主コンストラクタでない）の中で宣言された <code>var</code> プロパティで、カスタムゲッターやカスタムセッターを持たないプロパティでのみ使用することができる。
+プロパティの型は非nullでなければならず、プリミティブ型であってはならない。</p>
 
-<p>Accessing a <code>lateinit</code> property before it has been initialized throws a special exception that clearly identifies the property
-being accessed and the fact that it hasn’t been initialized.</p>
+<p><code>lateinit</code> プロパティが初期化される前にアクセスした場合、アクセスされたプロパティと、それが初期化されていないことを明確に示す特別な例外が投げられる。</p>
 
-<h2 id="overriding-properties">Overriding Properties<a href="#overriding-properties" class="anchor"></a></h2>
+<h2 id="section-6">プロパティのオーバライド<a href="#section-6" class="anchor"></a></h2>
 
-<p>See <a href="classes.html#overriding-members">Overriding Members</a></p>
+<p><a href="classes.html#overriding-members">Overriding Members</a> を参照のこと。</p>
 
-<h2 id="delegated-properties">Delegated Properties<a href="#delegated-properties" class="anchor"></a></h2>
+<h2 id="delegated-properties">委譲プロパティ（Delegated Properties）<a href="#delegated-properties" class="anchor"></a></h2>
 
-<p>The most common kind of properties simply reads from (and maybe writes to) a backing field. 
-On the other hand, with custom getters and setters one can implement any behaviour of a property.
-Somewhere in between, there are certain common patterns of how a property may work. A few examples: lazy values,
-reading from a map by a given key, accessing a database, notifying listener on access, etc.</p>
+<p>プロパティの最も一般的な種類はバッキングフィールドから読み込む（または書き込むかもしれない）ことである。
+一方、カスタムゲッターとセッターを使えばプロパティの振る舞いを如何様にも実装できる。
+プロパティの動作の確立された共通パターンがある。遅延評価値、与えられたキーでのmapの読み込み、データベースへのアクセス、アクセスをトリガとしてリスナに通知等が例として挙げられる。</p>
 
-<p>Such common behaviours can be implemented as libraries using <em>delegated properties</em>.
-For more information, look <a href="delegated-properties.html">here</a>.</p>
-
+<p>このような一般的な振る舞いは、 <em>delegated properties</em> を使ってライブラリに実装することができる。
+詳細は <a href="delegated-properties.html">here</a> を参照のこと。</p>
 
     </article>
 </div>

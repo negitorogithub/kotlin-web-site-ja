@@ -1028,37 +1028,34 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="classes-and-inheritance">Classes and Inheritance<a href="#classes-and-inheritance" class="anchor"></a></h1>
+        <h1 id="section">クラスと継承<a href="#section" class="anchor"></a></h1>
 
-<h2 id="classes">Classes<a href="#classes" class="anchor"></a></h2>
+<h2 id="section-1">クラス<a href="#section-1" class="anchor"></a></h2>
 
-<p>Classes in Kotlin are declared using the keyword <em class="keyword">class</em>:</p>
+<p>Kotlinでのクラスは <em class="keyword">class</em> キーワードを使用して宣言される。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Invoice</span> <span class="p">{</span>
 <span class="p">}</span></code></pre>
 
-<p>The class declaration consists of the class name, the class header (specifying its type parameters, the primary
-constructor etc.) and the class body, surrounded by curly braces. Both the header and the body are optional;
-if the class has no body, curly braces can be omitted.</p>
+<p>クラス宣言はクラス名、クラスヘッダ（その型パラメータ、主コンストラクタ等）、そしてクラス本体で構成され、波括弧で括られる。
+ヘッダと本体はどちらも必須ではない。もしクラスが本体を持たないならば、波括弧は省略できる。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Empty</span></code></pre>
 
-<h3 id="constructors">Constructors<a href="#constructors" class="anchor"></a></h3>
+<h3 id="section-2">コンストラクタ<a href="#section-2" class="anchor"></a></h3>
 
-<p>A class in Kotlin can have a <strong>primary constructor</strong> and one or more <strong>secondary constructors</strong>. The primary
-constructor is part of the class header: it goes after the class name (and optional type parameters).</p>
+<p>Kotlinのクラスは <strong>主コンストラクタ（プライマリコンストラクタ）</strong> と <strong>従コンストラクタ（セカンダリコンストラクタ）</strong> を持つことができる。
+主コンストラクタはクラスヘッダの一部であり、クラス名の後に続く（型引数は必須ではない）。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Person</span> <span class="n">constructor</span><span class="p">(</span><span class="n">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span></code></pre>
 
-<p>If the primary constructor does not have any annotations or visibility modifiers, the <em class="keyword">constructor</em>
-keyword can be omitted:</p>
+<p>もし主コンストラクタがアノテーションや可視性修飾子を何も持たなければ、 <em class="keyword">constructor</em> キーワードは省略できる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span></code></pre>
 
-<p>The primary constructor cannot contain any code. Initialization code can be placed
-in <strong>initializer blocks</strong>, which are prefixed with the <em class="keyword">init</em> keyword:</p>
+<p>主コンストラクタはどんなコードも含むことはできない。初期化コードは <em class="keyword">init</em> キーワードと共に <strong>初期化ブロック（イニシャライザブロック）</strong> の中に書くことができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Customer</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">init</span> <span class="p">{</span>
@@ -1066,32 +1063,30 @@ in <strong>initializer blocks</strong>, which are prefixed with the <em class="k
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>Note that parameters of the primary constructor can be used in the initializer blocks. They can also be used in
-property initializers declared in the class body:</p>
+<p>主コンストラクタの引数を初期化ブロック内で使用できることに注意すること。
+クラス本体内で宣言されるプロパティの初期化処理の中でそれらを使うことができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Customer</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">val</span> <span class="py">customerKey</span> <span class="p">=</span> <span class="n">name</span><span class="p">.</span><span class="n">toUpperCase</span><span class="p">()</span>
 <span class="p">}</span></code></pre>
 
-<p>In fact, for declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax:</p>
+<p>実際には、プロパティの宣言と初期化を主コンストラクタから行うために、Kotlinは簡潔な構文がある：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="py">lastName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">var</span> <span class="py">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span></code></pre>
 
-<p>Much the same way as regular properties, the properties declared in the primary constructor can be
-mutable (<em class="keyword">var</em>) or read-only (<em class="keyword">val</em>).</p>
+<p>通常のプロパティとほとんど同じ方法のように、プロパティは主コンストラクタの中で可変値（ミュータブル） (<em class="keyword">var</em>) または読み取り専用 (<em class="keyword">val</em>) で宣言することができる。</p>
 
-<p>If the constructor has annotations or visibility modifiers, the <em class="keyword">constructor</em> keyword is required, and
-the modifiers go before it:</p>
+<p>もしコンストラクタがアノテーションや可視性修飾子を持つ場合は、 <em class="keyword">constructor</em> キーワードが必要で修飾子はその前に置かれる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Customer</span> <span class="k">public</span> <span class="n">@Inject</span> <span class="n">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span></code></pre>
 
-<p>For more details, see <a href="visibility-modifiers.html#constructors">Visibility Modifiers</a>.</p>
+<p>詳細については、 <a href="visibility-modifiers.html#constructors">Visibility Modifiers</a> を参照のこと。</p>
 
-<h4 id="secondary-constructors">Secondary Constructors</h4>
+<h4 id="section-3">従コンストラクタ（セカンダリコンストラクタ）</h4>
 
-<p>The class can also declare <strong>secondary constructors</strong>, which are prefixed with <em class="keyword">constructor</em>:</p>
+<p>クラスは <strong>従コンストラクタ（セカンダリコンストラクタ）</strong> として <em class="keyword">constructor</em> と共に宣言することができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Person</span> <span class="p">{</span>
     <span class="n">constructor</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">Person</span><span class="p">)</span> <span class="p">{</span>
@@ -1099,9 +1094,8 @@ the modifiers go before it:</p>
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either
-directly or indirectly through another secondary constructor(s). Delegation to another constructor of the same class
-is done using the <em class="keyword">this</em> keyword:</p>
+<p>もしクラスが主コンストラクタを持つなら、それぞれの従コンストラクタは直接的であろうとなかろうと他の従コンストラクタを介して主コンストラクタへ委譲する必要がある。
+同クラスの他コンストラクタへの委譲は <em class="keyword">this</em> キーワードを用いて行う：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">Person</span><span class="p">)</span> <span class="p">:</span> <span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
@@ -1109,64 +1103,61 @@ is done using the <em class="keyword">this</em> keyword:</p>
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>If a non-abstract class does not declare any constructors (primary or secondary), it will have a generated primary
-constructor with no arguments. The visibility of the constructor will be public. If you do not want your class
-to have a public constructor, you need to declare an empty primary constructor with non-default visibility:</p>
+<p>もし非抽象クラスが何もコンストラクタ（主従共に）を宣言しなければ、主コンストラクタが引数無しで生成される。
+コンストラクタの可視性はpublicになる。
+もしpublicなコンストラクタを望まないならば、空の主コンストラクタをデフォルトでない可視性で宣言しなければならない。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">DontCreateMe</span> <span class="k">private</span> <span class="n">constructor</span> <span class="p">()</span> <span class="p">{</span>
 <span class="p">}</span></code></pre>
 
 <blockquote class="info">
-  <p><strong>NOTE</strong>: On the JVM, if all of the parameters of the primary constructor have default values, the compiler will
-generate an additional parameterless constructor which will use the default values. This makes it easier to use
-Kotlin with libraries such as Jackson or JPA that create class instances through parameterless constructors.</p>
+  <p><strong>注意</strong>: JVMでは、全ての主コンストラクタの全ての引数がデフォルト値を持つなら、コンパイラは追加の引数無しコンストラクタを生成し、デフォルト値として使用される。
+これはクラスインスタンスを引数無しコンストラクタとして生成するJacksonやJPAのようなライブラリをKotlinで使用することを容易にする。</p>
 
   <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Customer</span><span class="p">(</span><span class="k">val</span> <span class="py">customerName</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span></code></pre>
 </blockquote>
 
-<h3 id="creating-instances-of-classes">Creating instances of classes<a href="#creating-instances-of-classes" class="anchor"></a></h3>
+<h3 id="section-4">クラスのインスタンス生成<a href="#section-4" class="anchor"></a></h3>
 
-<p>To create an instance of a class, we call the constructor as if it were a regular function:</p>
+<p>クラスのインスタンスを生成するには、コンストラクタを普通の関数のように呼び出せば良い：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">invoice</span> <span class="p">=</span> <span class="n">Invoice</span><span class="p">()</span>
 
 <span class="k">val</span> <span class="py">customer</span> <span class="p">=</span> <span class="n">Customer</span><span class="p">(</span><span class="s">&quot;Joe Smith&quot;</span><span class="p">)</span></code></pre>
 
-<p>Note that Kotlin does not have a <em class="keyword">new</em> keyword.</p>
+<p>Kotlinは <em class="keyword">new</em> キーワードを持たないことに注意すること。</p>
 
-<h3 id="class-members">Class Members<a href="#class-members" class="anchor"></a></h3>
+<h3 id="section-5">クラスメンバ<a href="#section-5" class="anchor"></a></h3>
 
-<p>Classes can contain</p>
+<p>クラスは以下を含むことができる：</p>
 
 <ul>
-  <li>Constructors and initializer blocks</li>
-  <li><a href="functions.html">Functions</a></li>
-  <li><a href="properties.html">Properties</a></li>
-  <li><a href="nested-classes.html">Nested and Inner Classes</a></li>
-  <li><a href="object-declarations.html">Object Declarations</a></li>
+  <li>コンストラクタと初期化ブロック</li>
+  <li><a href="functions.html">関数</a></li>
+  <li><a href="properties.html">プロパティ</a></li>
+  <li><a href="nested-classes.html">ネストされたインナークラス</a></li>
+  <li><a href="object-declarations.html">オブジェクト宣言</a></li>
 </ul>
 
-<h2 id="inheritance">Inheritance<a href="#inheritance" class="anchor"></a></h2>
+<h2 id="section-6">継承<a href="#section-6" class="anchor"></a></h2>
 
-<p>All classes in Kotlin have a common superclass <code>Any</code>, that is a default super for a class with no supertypes declared:</p>
+<p>Kotlinの全てのクラスは共通の <code>Any</code> スーパークラスをもつ。これはデフォルトのクラスで、スーパータイプの宣言がない。</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Example</span> <span class="c1">// Implicitly inherits from Any</span></code></pre>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Example</span> <span class="c1">// Anyからの暗黙的継承</span></code></pre>
 
-<p><code>Any</code> is not <code>java.lang.Object</code>; in particular, it does not have any members other than <code>equals()</code>, <code>hashCode()</code> and <code>toString()</code>.
-Please consult the <a href="java-interop.html#object-methods">Java interoperability</a> section for more details.</p>
+<p><code>Any</code> は <code>java.lang.Object</code> ではない。特に、 <code>equals()</code> 、 <code>hashCode()</code> 、 <code>toString()</code> 以外のメンバを持たない。
+詳細については <a href="java-interop.html#object-methods">Java interoperability</a> を参照のこと。</p>
 
-<p>To declare an explicit supertype, we place the type after a colon in the class header:</p>
+<p>明示的にスーパータイプを宣言するには、クラスヘッダ内のコロンの後に型を書けば良い：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Derived</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre>
 
-<p>If the class has a primary constructor, the base type can (and must) be initialized right there,
-using the parameters of the primary constructor.</p>
+<p>もし明示的にスーパータイプを宣言するクラスが主コンストラクタを持つなら、主コンストラクタの引数を使用して基本型をここで初期化できる（そして、しなければならない）。</p>
 
-<p>If the class has no primary constructor, then each secondary constructor has to initialize the base type
-using the <em class="keyword">super</em> keyword, or to delegate to another constructor which does that.
-Note that in this case different secondary constructors can call different constructors of the base type:</p>
+<p>もし明示的にスーパータイプを宣言するクラスが主コンストラクタを持たないならば、従コンストラクタはそれぞれ基本型を <em class="keyword">super</em> キーワードを使って初期化するか、他の初期化してくれるコンストラクタに委譲しなければならない
+この事例では異なる従コンストラクタが異なる基本型を持つコンストラクタを呼び出していることに注意すること：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
     <span class="n">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">:</span> <span class="k">super</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
@@ -1181,10 +1172,12 @@ to inherit from this class. By default, all classes in Kotlin are final, which
 corresponds to <a href="http://www.oracle.com/technetwork/java/effectivejava-136174.html">Effective Java</a>,
 Item 17: <em>Design and document for inheritance or else prohibit it</em>.</p>
 
-<h3 id="overriding-members">Overriding Members<a href="#overriding-members" class="anchor"></a></h3>
+<p>クラスにおける <em class="keyword">open</em> アノテーションはJavaの <em class="keyword">final</em> と対照的であり、他者に自身のクラスを継承することを許可する。</p>
 
-<p>As we mentioned before, we stick to making things explicit in Kotlin. And unlike Java, Kotlin requires explicit
-annotations for overridable members (we call them <em>open</em>) and for overrides:</p>
+<h3 id="section-7">メンバのオーバライド<a href="#section-7" class="anchor"></a></h3>
+
+<p>前述の通り、Kotlinでは明示的に作るということにこだわる。
+そしてJavaとは異なり、Kotlinではオーバライドできるメンバとオーバライドには明示的アノテーションが必要である。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
   <span class="k">open</span> <span class="k">fun</span> <span class="nf">v</span><span class="p">()</span> <span class="p">{}</span>
@@ -1194,33 +1187,37 @@ annotations for overridable members (we call them <em>open</em>) and for overrid
   <span class="k">override</span> <span class="k">fun</span> <span class="nf">v</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span></code></pre>
 
-<p>The <em class="keyword">override</em> annotation is required for <code>Derived.v()</code>. If it were missing, the compiler would complain.
-If there is no <em class="keyword">open</em> annotation on a function, like <code>Base.nv()</code>, declaring a method with the same signature in a subclass is illegal,
-either with <em class="keyword">override</em> or without it. In a final class (e.g. a class with no <em class="keyword">open</em> annotation), open members are prohibited.</p>
+<p><em class="keyword">override</em> アノテーションは <code>Derived.v()</code> の為に必要である。もし無ければ、コンパイラはエラーを発する。
+もし <em class="keyword">open</em> アノテーションが <code>Base.nv()</code> のように関数になければ、メソッドをサブクラス内で同じ識別子で宣言することは <em class="keyword">override</em> の有無にかかわらず文法違反である。
+ファイナルクラス（例えば、 <em class="keyword">open</em> アノテーションを持たないクラス）の中では、openメンバは禁止されている。</p>
 
-<p>A member marked <em class="keyword">override</em> is itself open, i.e. it may be overridden in subclasses. If you want to prohibit re-overriding, use <em class="keyword">final</em>:</p>
+<p><em class="keyword">override</em> としてマークされているメンバは、それ自身がopenである。すなわち、サブクラス内でオーバライドされうる。
+もしあなたが再オーバライドを禁止したければ、 <em class="keyword">final</em> キーワードを使うこと：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">AnotherDerived</span><span class="p">()</span> <span class="p">:</span> <span class="n">Base</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">final</span> <span class="k">override</span> <span class="k">fun</span> <span class="nf">v</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span></code></pre>
 
-<h4 id="wait-how-will-i-hack-my-libraries-now">Wait! How will I hack my libraries now?!</h4>
+<h4 id="section-8">待って！じゃあどうやって自分のライブラリをハックすれば良いの？！</h4>
 
-<p>One issue with our approach to overriding (classes and members final by default) is that it would be difficult to subclass something inside the libraries you use to override some method that was not intended for overriding by the library designer, and introduce some nasty hack there.</p>
+<p>オーバライドのKotlinでの方法（クラスやメンバはデフォルトでfinal）には1つ問題がある。
+あなたが使用しているライブラリ内の何かをサブクラス化し、
+いくつかのメソッドをオーバライドして（ライブラリの設計者はそれを意図していない）
+そこにいくつかの厄介なハックを導入するのが難しくなる。</p>
 
-<p>We think that this is not a disadvantage, for the following reasons:</p>
+<p>我々はこれが次の理由から欠点ではないと考えている：</p>
 
 <ul>
-  <li>Best practices say that you should not allow these hacks anyway</li>
-  <li>People successfully use other languages (C++, C#) that have similar approach</li>
-  <li>If people really want to hack, there still are ways: you can always write your hack in Java and call it from Kotlin (<em>see <a href="java-interop.html">Java Interop</a></em>), and Aspect frameworks always work for these purposes</li>
+  <li>ベストプラクティスは「とにかくこれらのハックを許可すべきではない」ということである</li>
+  <li>同様のアプローチを取っている他の言語 (C++, C#) はうまくいっている</li>
+  <li>もし本当にこのハックが必要ならば、それでも方法は残っている：いつでもハックをJavaで書き、Kotlinから呼ぶことができる（ <em><a href="java-interop.html">Java Interop</a>を参照のこと</em> ）し、Aspectフレームワークはいつもこれらの目的にかなう</li>
 </ul>
 
-<h3 id="overriding-rules">Overriding Rules<a href="#overriding-rules" class="anchor"></a></h3>
+<h3 id="section-9">ルールのオーバライド<a href="#section-9" class="anchor"></a></h3>
 
-<p>In Kotlin, implementation inheritance is regulated by the following rule: if a class inherits many implementations of the same member from its immediate superclasses,
-it must override this member and provide its own implementation (perhaps, using one of the inherited ones).
-To denote the supertype from which the inherited implementation is taken, we use <em class="keyword">super</em> qualified by the supertype name in angle brackets, e.g. <code>super&lt;Base&gt;</code>:</p>
+<p>Kotlinでは、継承の実装は次のルールで定められている：もしクラスが直接のスーパークラスから同じメンバの多くの実装を継承する場合、クラスはこのメンバを継承し、その独自の実装（おそらく、継承されたものの一つを使用して）を提供しなければならない。
+継承された実装のスーパータイプであることを示すために、スーパータイプの名前を角括弧で記述し、 <em class="keyword">super</em> キーワードを使用する。
+例： <code>super&lt;Base&gt;</code></p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
   <span class="k">open</span> <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">)</span> <span class="p">}</span>
@@ -1228,27 +1225,26 @@ To denote the supertype from which the inherited implementation is taken, we use
 <span class="p">}</span>
 
 <span class="n">interface</span> <span class="n">B</span> <span class="p">{</span>
-  <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="c1">// interface members are &#39;open&#39; by default</span>
+  <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="c1">// インタフェースメンバはデフォルトで&#39;open&#39;</span>
   <span class="k">fun</span> <span class="nf">b</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">)</span> <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">()</span> <span class="p">:</span> <span class="n">A</span><span class="p">(),</span> <span class="n">B</span> <span class="p">{</span>
-  <span class="c1">// The compiler requires f() to be overridden:</span>
+  <span class="c1">// コンパイラはf()をオーバライドするために必要とする：</span>
   <span class="k">override</span> <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">&lt;</span><span class="n">A</span><span class="p">&gt;.</span><span class="n">f</span><span class="p">()</span> <span class="c1">// call to A.f()</span>
-    <span class="k">super</span><span class="p">&lt;</span><span class="n">B</span><span class="p">&gt;.</span><span class="n">f</span><span class="p">()</span> <span class="c1">// call to B.f()</span>
+    <span class="k">super</span><span class="p">&lt;</span><span class="n">A</span><span class="p">&gt;.</span><span class="n">f</span><span class="p">()</span> <span class="c1">// A.f() を呼ぶ</span>
+    <span class="k">super</span><span class="p">&lt;</span><span class="n">B</span><span class="p">&gt;.</span><span class="n">f</span><span class="p">()</span> <span class="c1">// B.f() を呼ぶ</span>
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>It’s fine to inherit from both <code>A</code> and <code>B</code>, and we have no problems with <code>a()</code> and <code>b()</code> since <code>C</code> inherits only one implementation of each of these functions.
-But for <code>f()</code> we have two implementations inherited by <code>C</code>, and thus we have to override <code>f()</code> in <code>C</code>
-and provide our own implementation that eliminates the ambiguity.</p>
+<p><code>A</code> と <code>B</code> の両方から継承するのは問題なく、  <code>C</code> はそれらの関数の唯一の実装であるため <code>a()</code> と <code>b()</code> も同様である。
+しかし <code>f()</code> については、2つの実装が <code>C</code> に継承されているため、 <code>C</code> の <code>f()</code> をオーバライドし、曖昧さを排除するため独自の実装を提供する必要がある。</p>
 
-<h2 id="abstract-classes">Abstract Classes<a href="#abstract-classes" class="anchor"></a></h2>
+<h2 id="section-10">抽象クラス<a href="#section-10" class="anchor"></a></h2>
 
-<p>A class and some of its members may be declared <em class="keyword">abstract</em>.
-An abstract member does not have an implementation in its class.
-Thus, when some descendant inherits an abstract member, it does not count as an implementation:</p>
+<p>クラスとそのメンバは <em class="keyword">abstract</em> を使用してabstractとして宣言することができる。
+抽象メンバはそのクラス内に実装を持たない。
+それ故、いくつかの子孫が抽象メンバを継承すれば、それは実装としてカウントされない：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
   <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span>
@@ -1259,12 +1255,12 @@ Thus, when some descendant inherits an abstract member, it does not count as an 
 <span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">()</span> <span class="p">:</span> <span class="n">A</span><span class="p">(),</span> <span class="n">B</span> <span class="p">{</span>
-  <span class="c1">// We are not required to override f()</span>
+  <span class="c1">// f()をオーバライドする必要はない</span>
 <span class="p">}</span></code></pre>
 
-<p>Note that we do not need to annotate an abstract class or function with open – it goes without saying.</p>
+<p>抽象クラスや抽象関数をopenアノテーションを付ける必要はないことに注意すること。言うまでもないが。</p>
 
-<p>We can override a non-abstract open member with an abstract one</p>
+<p>非抽象openメンバを抽象メンバとしてオーバライドすることもできる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
   <span class="k">open</span> <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{}</span>
@@ -1274,28 +1270,21 @@ Thus, when some descendant inherits an abstract member, it does not count as an 
   <span class="k">override</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">f</span><span class="p">()</span>
 <span class="p">}</span></code></pre>
 
-<h2 id="companion-objects">Companion Objects<a href="#companion-objects" class="anchor"></a></h2>
+<h2 id="companion-objects">コンパニオンオブジェクト（Companion Objects）<a href="#companion-objects" class="anchor"></a></h2>
 
-<p>In Kotlin, unlike Java or C#, classes do not have static methods. In most cases, it’s recommended to simply use
-package-level functions instead.</p>
+<p>Kotlinでは、JavaやC#とは異なり、staticメソッドを持たない。ほとんどの場合、パッケージレベルの関数を使用することが推奨される。</p>
 
-<p>If you need to write a function that can be called without having a class instance but needs access to the internals
-of a class (for example, a factory method), you can write it as a member of an <a href="object-declarations.html">object declaration</a>
-inside that class.</p>
+<p>もしクラスインスタンスを持たずに呼べるがクラス内部（例えばファクトリメソッド）へアクセスする必要のある関数を書く必要があれば、そのクラスの中で <a href="object-declarations.html">object declaration</a> のメンバとして書くことができる。</p>
 
-<p>Even more specifically, if you declare a <a href="object-declarations.html#companion-objects">companion object</a> inside your class,
-you’ll be able to call its members with the same syntax as calling static methods in Java/C#, using only the class name
-as a qualifier.</p>
+<p>もし <a href="object-declarations.html#companion-objects">companion object</a> をクラス内で宣言した場合であっても、クラス名を識別子として、static関数をJava/C# で呼ぶのと同じ構文でそのメンバを呼ぶことができる。</p>
 
-<h2 id="sealed-classes">Sealed Classes<a href="#sealed-classes" class="anchor"></a></h2>
+<h2 id="sealed-classes">シールクラス（Sealed Classes）<a href="#sealed-classes" class="anchor"></a></h2>
 
-<p>Sealed classes are used for representing restricted class hierarchies, when a value can have one of the types from a
-limited set, but cannot have any other type. They are, in a sense, an extension of enum classes: the set of values
-for an enum type is also restricted, but each enum constant exists only as a single instance, whereas a subclass
-of a sealed class can have multiple instances which can contain state.</p>
+<p>値が制限されたセットの1つの型を持つが、他の型を持てない場合、シールクラスが制限されたクラス階層を表現する際に用いられる。
+それらはある意味、enum（列挙型）クラスの拡張である。
+enum型の値のセットも同じく制限されているが、それぞれのenum定数はシングルインスタンスとしてのみ存在し、シールクラスのサブクラスは状態を保持できる複数のインスタンスをもつことができる。</p>
 
-<p>To declare a sealed class, you put the <code>sealed</code> modifier before the name of the class. A sealed class can have
-subclasses, but all of them must be nested inside the declaration of the sealed class itself.</p>
+<p>シールクラスを宣言するには、 <code>sealed</code> 修飾子をクラス名の前に置けば良い。シールクラスはサブクラスを持つことができるが、それらは全てシールクラス自身の宣言の中にネストされていなければならない。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">sealed</span> <span class="k">class</span> <span class="nc">Expr</span> <span class="p">{</span>
     <span class="k">class</span> <span class="nc">Const</span><span class="p">(</span><span class="k">val</span> <span class="py">number</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">:</span> <span class="n">Expr</span><span class="p">()</span>
@@ -1303,17 +1292,16 @@ subclasses, but all of them must be nested inside the declaration of the sealed 
     <span class="k">object</span> <span class="nc">NotANumber</span> <span class="p">:</span> <span class="n">Expr</span><span class="p">()</span>
 <span class="p">}</span></code></pre>
 
-<p>Note that classes which extend subclasses of a sealed class (indirect inheritors) can be placed anywhere, not necessarily inside
-the declaration of the sealed class.</p>
+<p>シールクラスのサブクラス（間接的な継承）を拡張するクラスはどこにでも置くことができ、シールクラスの中に書く必要はないことに注意すること。</p>
 
-<p>The key benefit of using sealed classes comes into play when you use them in a <a href="control-flow.html#when-expression"><code>when</code> expression</a>. If it’s possible
-to verify that the statement covers all cases, you don’t need to add an <code>else</code> clause to the statement.</p>
+<p>シールクラスを使うことの主な利点は <a href="control-flow.html#when-expression"><code>when</code> expression</a> の中で使用されたときに発揮される。
+もし文が全てのcaseをカバーすることを確認できれば、 <code>else</code> 句を追加する必要はない。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Expr</span><span class="p">):</span> <span class="n">Double</span> <span class="p">=</span> <span class="k">when</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">is</span> <span class="n">Const</span> <span class="p">-&gt;</span> <span class="n">expr</span><span class="p">.</span><span class="n">number</span>
     <span class="k">is</span> <span class="n">Sum</span> <span class="p">-&gt;</span> <span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">.</span><span class="n">e1</span><span class="p">)</span> <span class="p">+</span> <span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">.</span><span class="n">e2</span><span class="p">)</span>
     <span class="n">NotANumber</span> <span class="p">-&gt;</span> <span class="n">Double</span><span class="p">.</span><span class="n">NaN</span>
-    <span class="c1">// the `else` clause is not required because we&#39;ve covered all the cases</span>
+    <span class="c1">// 全てのcaseがカバーされているため、`else` 句は必要ではない</span>
 <span class="p">}</span></code></pre>
 
     </article>

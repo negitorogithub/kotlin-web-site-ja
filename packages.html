@@ -1028,9 +1028,9 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="packages">Packages<a href="#packages" class="anchor"></a></h1>
+        <h1 id="section">パッケージ<a href="#section" class="anchor"></a></h1>
 
-<p>A source file may start with a package declaration:</p>
+<p>ソースファイルはパッケージ宣言から始めることができる。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">package</span> <span class="nn">foo.bar</span>
 
@@ -1040,39 +1040,41 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 <span class="c1">// ...</span></code></pre>
 
-<p>All the contents (such as classes and functions) of the source file are contained by the package declared.
-So, in the example above, the full name of <code>baz()</code> is <code>foo.bar.baz</code>, and the full name of <code>Goo</code> is <code>foo.bar.Goo</code>.</p>
+<p>ソースファイル中のクラスや関数のような全ての内容は宣言パッケージに含まれる。
+従って、次の例で示すとおり、 <code>baz()</code> の完全名は <code>foo.bar.baz</code> であり、 <code>Goo</code> の完全名は <code>foo.bar.Goo</code> である。
+もしパッケージが指定されない場合は、ファイルの内容は名前を持たない”default”パッケージの属することになる。</p>
 
-<p>If the package is not specified, the contents of such a file belong to “default” package that has no name.</p>
+<h2 id="imports">インポート（Imports）<a href="#imports" class="anchor"></a></h2>
 
-<h2 id="imports">Imports<a href="#imports" class="anchor"></a></h2>
+<p>標準のインポートとは違い、それぞれのファイルは独自のインポートディレクティブを含んで良い。
+インポートの文法は、 <a href="grammar.html#imports">grammar</a> に記載されている。</p>
 
-<p>Apart from the default imports, each file may contain its own import directives.
-Syntax for imports is described in the <a href="grammar.html#imports">grammar</a>.</p>
+<p>単一の名前を指定してインポートできる。例：</p>
 
-<p>We can import either a single name, e.g.</p>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">foo.Bar</span> <span class="c1">// Barには許可無しで利用可能になる</span></code></pre>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">foo.Bar</span> <span class="c1">// Bar is now accessible without qualification</span></code></pre>
+<p>または、あるスコープ（パッケージ、クラス、オブジェクト等）内の全てのアクセス可能なコンテンツの場合：</p>
 
-<p>or all the accessible contents of a scope (package, class, object etc):</p>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">foo.*</span> <span class="c1">// &#39;foo&#39;内の全てが利用可能になる</span></code></pre>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">foo.*</span> <span class="c1">// everything in &#39;foo&#39; becomes accessible</span></code></pre>
+<p>もし名前空間が衝突したら、 <em class="keyword">as</em> キーワードを使用して衝突するエンティティを局所的にリネームすることで明確にできる：</p>
 
-<p>If there is a name clash, we can disambiguate by using <em class="keyword">as</em> keyword to locally rename the clashing entity:</p>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">foo.Bar</span> <span class="c1">// Barは利用可能</span>
+<span class="k">import</span> <span class="nn">bar.Bar</span> <span class="k">as</span> <span class="n">bBar</span> <span class="c1">// bBarは&#39;bar.Bar&#39;を意味する</span></code></pre>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">import</span> <span class="nn">foo.Bar</span> <span class="c1">// Bar is accessible</span>
-<span class="k">import</span> <span class="nn">bar.Bar</span> <span class="k">as</span> <span class="n">bBar</span> <span class="c1">// bBar stands for &#39;bar.Bar&#39;</span></code></pre>
+<p><code>import</code> キーワードわクラスをインポートするために限定されるわけではない。他の宣言をインポートするために使用することができる：</p>
 
-<p>The <code>import</code> keyword is not restricted to importing classes; you can also use it to import other declarations:
-  * top-level functions and properties;
-  * functions and properties declared in <a href="object-declarations.html#object-declarations">object declarations</a>;
-  * <a href="enum-classes.html">enum constants</a></p>
+<ul>
+  <li>トップレベルの関数やプロパティ</li>
+  <li><a href="object-declarations.html#object-declarations">object declarations</a> で宣言された関数やプロパティ</li>
+  <li><a href="enum-classes.html">enum定数</a></li>
+</ul>
 
-<p>Unlike Java, Kotlin does not have a separate “import static” syntax; all of these declarations are imported using the regular <code>import</code> keyword.</p>
+<p>Javaとは違って、Kotlinは別の”import static”構文を持っていない。全ての宣言は普通の <code>import</code> キーワードによってインポートされる。</p>
 
-<h2 id="visibility-of-top-level-declarations">Visibility of Top-level Declarations<a href="#visibility-of-top-level-declarations" class="anchor"></a></h2>
+<h2 id="section-1">トップレベル宣言の可視性<a href="#section-1" class="anchor"></a></h2>
 
-<p>If a top-level declaration is marked <em class="keyword">private</em>, it is private to the file it’s declared in (see <a href="visibility-modifiers.html">Visibility Modifiers</a>).</p>
+<p>もしトップレベルの宣言に <em class="keyword">private</em> マークがついていれば、それが宣言されたファイル内に対しprivateである。  <a href="visibility-modifiers.html">Visibility Modifiers</a> を参照のこと。</p>
 
     </article>
 </div>

@@ -1028,34 +1028,34 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="interfaces">Interfaces<a href="#interfaces" class="anchor"></a></h1>
+        <h1 id="section">インタフェース<a href="#section" class="anchor"></a></h1>
 
-<p>Interfaces in Kotlin are very similar to Java 8. They can contain declarations of abstract methods, as well as method
-implementations. What makes them different from abstract classes is that interfaces cannot store state. They can have
-properties but these need to be abstract.</p>
+<p>KotlinでのインタフェースはJava 8と非常に似ている。メソッドの実装と同じように抽象メソッドの宣言を含むことができる。
+抽象クラスとの違いはインタフェースは状態を持てないことである。プロパティは状態を持てるが、抽象である必要がある。</p>
 
-<p>An interface is defined using the keyword <em class="keyword">interface</em></p>
+<p>インタフェースは <em class="keyword">interface</em> キーワードを用いて宣言される。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">interface</span> <span class="n">MyInterface</span> <span class="p">{</span>
     <span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span>
     <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
-      <span class="c1">// optional body</span>
+      <span class="c1">// 本体は必須ではない</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<h2 id="implementing-interfaces">Implementing Interfaces<a href="#implementing-interfaces" class="anchor"></a></h2>
+<h2 id="section-1">インタフェースの実装<a href="#section-1" class="anchor"></a></h2>
 
-<p>A class or object can implement one or more interfaces</p>
+<p>クラスやオブジェクトは1つまたは複数のインタフェースを実装できる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Child</span> <span class="p">:</span> <span class="n">MyInterface</span> <span class="p">{</span>
    <span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{</span>
-      <span class="c1">// body</span>
+      <span class="c1">// 本体</span>
    <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<h2 id="properties-in-interfaces">Properties in Interfaces<a href="#properties-in-interfaces" class="anchor"></a></h2>
+<h2 id="section-2">インタフェース内のプロパティ<a href="#section-2" class="anchor"></a></h2>
 
-<p>Interfaces allow properties as long as these are stateless, that is because interfaces do not allow state.</p>
+<p>インタフェースはプロパティがステートレスである限り許容する。これはインタフェースが状態を持つことを許可しないためである。
+（訳注：最新版は以下の通り：プロパティをインタフェース内に宣言することができる。インタフェースの中で宣言されたプロパティは抽象にも慣れるし、アクセサの実装を提供することもできる。インタフェース内で宣言されたプロパティはバッキングフィールドを持つことはできず、それ故にインタフェース内で宣言されたアクセサはそれらを参照できない。）</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">interface</span> <span class="n">MyInterface</span> <span class="p">{</span>
     <span class="k">val</span> <span class="py">property</span><span class="p">:</span> <span class="n">Int</span> <span class="c1">// abstract</span>
@@ -1069,9 +1069,9 @@ properties but these need to be abstract.</p>
     <span class="k">override</span> <span class="k">val</span> <span class="py">property</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">29</span>
 <span class="p">}</span></code></pre>
 
-<h2 id="resolving-overriding-conflicts">Resolving overriding conflicts<a href="#resolving-overriding-conflicts" class="anchor"></a></h2>
+<h2 id="section-3">オーバライドの衝突解決<a href="#section-3" class="anchor"></a></h2>
 
-<p>When we declare many types in our supertype list, it may appear that we inherit more than one implementation of the same method. For example</p>
+<p>スーパータイプのリストで沢山の型を宣言すると同メソッドの複数の実装を継承するように見えることがある。例えば：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">interface</span> <span class="n">A</span> <span class="p">{</span>
   <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">)</span> <span class="p">}</span>
@@ -1094,10 +1094,12 @@ properties but these need to be abstract.</p>
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>Interfaces <em>A</em> and <em>B</em> both declare functions <em>foo()</em> and <em>bar()</em>. Both of them implement <em>foo()</em>, but only <em>B</em> implements <em>bar()</em> (<em>bar()</em> is not marked abstract in <em>A</em>,
-because this is the default for interfaces, if the function has no body). Now, if we derive a concrete class <em>C</em> from <em>A</em>, we, obviously, have to override <em>bar()</em> and provide
-an implementation. And if we derive <em>D</em> from <em>A</em> and <em>B</em>, we don’t have to override <em>bar()</em>, because we have inherited only one implementation of it.
-But we have inherited two implementations of <em>foo()</em>, so the compiler does not know which one to choose, and forces us to override <em>foo()</em> and say what we want explicitly.</p>
+<p>インタフェース <em>A</em> と <em>B</em> は、両方とも関数 <em>foo()</em> と <em>bar()</em> を宣言している。
+両方とも <em>foo()</em> を実装しているが、 <em>B</em> のみが <em>bar()</em> を実装している。（ <em>bar()</em> は <em>A</em> ではabstractとしてマークされていない。これは関数が本体を持たない際のインタフェースのデフォルトであるためだ。）
+さて、もし具体クラス <em>C</em> を <em>A</em> から得れば、 <em>bar()</em> をオーバライドし、実装を提供しなければならないことは明らかである。
+そしてもし <em>D</em> を <em>A</em> と <em>B</em> から得れば、 <em>bar()</em> をオーバライドする必要はない。なぜなら1つの実装を継承したからである。</p>
+
+<p>しかし <em>foo()</em> の実装を2つ継承してしまったため、コンパイラはどっちを選んだら良いかわからない。従って <em>foo()</em> のオーバライドが強制され、何が欲しいのかを明示する必要がある。</p>
 
     </article>
 </div>

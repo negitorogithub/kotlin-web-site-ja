@@ -1028,81 +1028,78 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="control-flow">Control Flow<a href="#control-flow" class="anchor"></a></h1>
+        <h1 id="section">制御フロー<a href="#section" class="anchor"></a></h1>
 
-<h2 id="if-expression">If Expression<a href="#if-expression" class="anchor"></a></h2>
+<h2 id="if">if式<a href="#if" class="anchor"></a></h2>
 
-<p>In Kotlin, <em class="keyword">if</em> is an expression, i.e. it returns a value.
-Therefore there is no ternary operator (condition ? then : else), because ordinary <em class="keyword">if</em> works fine in this role.</p>
+<p>Kotlinでは、 <em class="keyword">if</em> は式であり、すなわち値を返す。従って、三項演算子は存在しない。なぜなら普通の <em class="keyword">if</em> がその役割を果たすためである。</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// Traditional usage </span>
-<span class="k">var</span> <span class="py">max</span> <span class="p">=</span> <span class="n">a</span> 
-<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&lt;</span> <span class="n">b</span><span class="p">)</span> 
-  <span class="n">max</span> <span class="p">=</span> <span class="n">b</span> 
- 
-<span class="c1">// With else </span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// 従来の使用法</span>
+<span class="k">var</span> <span class="py">max</span> <span class="p">=</span> <span class="n">a</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&lt;</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">max</span> <span class="p">=</span> <span class="n">b</span>
+
+<span class="c1">// elseも使用</span>
 <span class="k">var</span> <span class="py">max</span><span class="p">:</span> <span class="n">Int</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span><span class="p">)</span> 
-  <span class="n">max</span> <span class="p">=</span> <span class="n">a</span> 
-<span class="k">else</span> 
-  <span class="n">max</span> <span class="p">=</span> <span class="n">b</span> 
- 
-<span class="c1">// As expression </span>
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">max</span> <span class="p">=</span> <span class="n">a</span>
+<span class="k">else</span>
+  <span class="n">max</span> <span class="p">=</span> <span class="n">b</span>
+
+<span class="c1">// 式として使用</span>
 <span class="k">val</span> <span class="py">max</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="n">a</span> <span class="k">else</span> <span class="n">b</span></code></pre>
 
-<p><em class="keyword">if</em> branches can be blocks, and the last expression is the value of a block:</p>
+<p><em class="keyword">if</em> の分岐はブロックにすることができ、最後の式がそのブロックの値となる：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">max</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Choose a&quot;</span><span class="p">)</span> 
-    <span class="n">a</span> 
-  <span class="p">}</span> 
-  <span class="k">else</span> <span class="p">{</span> 
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Choose b&quot;</span><span class="p">)</span> 
-    <span class="n">b</span> 
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">max</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Choose a&quot;</span><span class="p">)</span>
+    <span class="n">a</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Choose b&quot;</span><span class="p">)</span>
+    <span class="n">b</span>
   <span class="p">}</span></code></pre>
 
-<p>If you’re using <em class="keyword">if</em> as an expression rather than a statement (for example, returning its value or
-assigning it to a variable), the expression is required to have an <code>else</code> branch.</p>
+<p>もし <em class="keyword">if</em> を文ではなく式として使用する（例えば値を返したり変数に代入したり）ならば、その式には <code>else</code> 分岐が必要である。</p>
 
-<p>See the <a href="grammar.html#if">grammar for <em class="keyword">if</em></a>.</p>
+<p><a href="grammar.html#if">grammar for <em class="keyword">if</em></a> を参照のこと。</p>
 
-<h2 id="when-expression">When Expression<a href="#when-expression" class="anchor"></a></h2>
+<h2 id="when">when式<a href="#when" class="anchor"></a></h2>
 
-<p><em class="keyword">when</em> replaces the switch operator of C-like languages. In the simplest form it looks like this</p>
+<p><em class="keyword">when</em> はC言語のような言語におけるswitch演算子の置き換えである。最も簡単な形式では、次のようになる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="m">1</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;x == 1&quot;</span><span class="p">)</span>
   <span class="m">2</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;x == 2&quot;</span><span class="p">)</span>
-  <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{</span> <span class="c1">// Note the block</span>
+  <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{</span> <span class="c1">// このブロックに注目</span>
     <span class="n">print</span><span class="p">(</span><span class="s">&quot;x is neither 1 nor 2&quot;</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p><em class="keyword">when</em> matches its argument against all branches consequently until some branch condition is satisfied.
-<em class="keyword">when</em> can be used either as an expression or as a statement. If it is used as an expression, the value
-of the satisfied branch becomes the value of the overall expression. If it is used as a statement, the values of
-individual branches are ignored. (Just like with <em class="keyword">if</em>, each branch can be a block, and its value
-is the value of the last expression in the block.)</p>
+<p><em class="keyword">when</em> はその引数と条件が満たされる分岐が現れるまで、順番に全ての分岐に対して比較する。</p>
 
-<p>The <em class="keyword">else</em> branch is evaluated if none of the other branch conditions are satisfied.
-If <em class="keyword">when</em> is used as an expression, the <em class="keyword">else</em> branch is mandatory,
-unless the compiler can prove that all possible cases are covered with branch conditions.</p>
+<p><em class="keyword">when</em> は式としても文としても使うことができる。
+もし式として使用されれば、その値は条件が満たされた分岐が全ての式の値となる。
+もし文として使用されれば、個別の条件は無視される（ <em class="keyword">if</em> と全く同じく、それぞれの条件はブロックになるため、その値はブロック内の最後の式のものとなる）。</p>
 
-<p>If many cases should be handled in the same way, the branch conditions may be combined with a comma:</p>
+<p><em class="keyword">else</em> 条件は他の条件が全て満たされなかった際に評価される。
+もしが式として使用されれば、全てのあり得る場合を分岐条件で網羅できていることをコンパイラが証明できない限りは、 <em class="keyword">else</em> 条件は必須である。</p>
+
+<p>もしたくさんの条件を同じ方法で処理する必要がある場合には、分岐条件をコンマでまとめることができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="m">0</span><span class="p">,</span> <span class="m">1</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;x == 0 or x == 1&quot;</span><span class="p">)</span>
   <span class="k">else</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;otherwise&quot;</span><span class="p">)</span>
 <span class="p">}</span></code></pre>
 
-<p>We can use arbitrary expressions (not only constants) as branch conditions</p>
+<p>分岐条件として任意の式（定数に限らない）を使用することができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">parseInt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;s encodes x&quot;</span><span class="p">)</span>
   <span class="k">else</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;s does not encode x&quot;</span><span class="p">)</span>
 <span class="p">}</span></code></pre>
 
-<p>We can also check a value for being <em class="keyword">in</em> or <em class="keyword">!in</em> a <a href="ranges.html">range</a> or a collection:</p>
+<p><em class="keyword">in</em> または <em class="keyword">!in</em> を使用すると、コレクションの <a href="ranges.html">範囲 (range)</a> をチェックすることもできる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="m">10</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;x is in the range&quot;</span><span class="p">)</span>
@@ -1111,17 +1108,16 @@ unless the compiler can prove that all possible cases are covered with branch co
   <span class="k">else</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;none of the above&quot;</span><span class="p">)</span>
 <span class="p">}</span></code></pre>
 
-<p>Another possibility is to check that a value <em class="keyword">is</em> or <em class="keyword">!is</em> of a particular type. Note that,
-due to <a href="typecasts.html#smart-casts">smart casts</a>, you can access the methods and properties of the type without
-any extra checks.</p>
+<p>値をチェックする他の方法として、特定の型の <em class="keyword">is</em> または <em class="keyword">!is</em> がある。
+<a href="typecasts.html#smart-casts">smart casts</a> のおかげで、その型のメソッドやプロパティに追加のチェック無しでアクセスできることに注意すること。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">hasPrefix</span> <span class="p">=</span> <span class="k">when</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">is</span> <span class="n">String</span> <span class="p">-&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">startsWith</span><span class="p">(</span><span class="s">&quot;prefix&quot;</span><span class="p">)</span>
   <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">false</span>
 <span class="p">}</span></code></pre>
 
-<p><em class="keyword">when</em> can also be used as a replacement for an <em class="keyword">if</em>-<em class="keyword">else</em> <em class="keyword">if</em> chain.
-If no argument is supplied, the branch conditions are simply boolean expressions, and a branch is executed when its condition is true:</p>
+<p><em class="keyword">when</em> は <em class="keyword">if</em>-<em class="keyword">else</em> <em class="keyword">if</em> 連鎖を代替することもできる。
+引数が与えられない場合は、分岐条件は単純なbooleanの式となり、分岐はその条件がtrueの場合に実行される：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">when</span> <span class="p">{</span>
   <span class="n">x</span><span class="p">.</span><span class="n">isOdd</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;x is odd&quot;</span><span class="p">)</span>
@@ -1129,52 +1125,53 @@ If no argument is supplied, the branch conditions are simply boolean expressions
   <span class="k">else</span> <span class="p">-&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;x is funny&quot;</span><span class="p">)</span>
 <span class="p">}</span></code></pre>
 
-<p>See the <a href="grammar.html#when">grammar for <em class="keyword">when</em></a>.</p>
+<p><a href="grammar.html#when">grammar for <em class="keyword">when</em></a> を参照のこと。</p>
 
-<h2 id="for-loops">For Loops<a href="#for-loops" class="anchor"></a></h2>
+<h2 id="for">forループ<a href="#for" class="anchor"></a></h2>
 
-<p><em class="keyword">for</em> loop iterates through anything that provides an iterator. The syntax is as follows:</p>
+<p><em class="keyword">for</em> ループはイテレータによって提供されるもの全てを繰り返し実行する。
+構文は次の通り：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">collection</span><span class="p">)</span>
   <span class="n">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre>
 
-<p>The body can be a block.</p>
+<p>本文をブロックにすることもできる。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">for</span> <span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Int</span> <span class="k">in</span> <span class="n">ints</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span></code></pre>
 
-<p>As mentioned before, <em class="keyword">for</em> iterates through anything that provides an iterator, i.e.</p>
+<p>前述したように、 <em class="keyword">for</em> はイテレータとして提供されるもの全てを繰り返し実行する。すなわち：</p>
 
 <ul>
-  <li>has a member- or extension-function <code>iterator()</code>, whose return type
+  <li>メンバ関数や拡張関数の <code>iterator()</code> は型を返し、
     <ul>
-      <li>has a member- or extension-function <code>next()</code>, and</li>
-      <li>has a member- or extension-function <code>hasNext()</code> that returns <code>Boolean</code>.</li>
+      <li>メンバ関数や拡張関数の <code>next()</code> と</li>
+      <li>メンバ関数や拡張関数の <code>hasNext()</code> は <code>Boolean</code> を返す。</li>
     </ul>
   </li>
 </ul>
 
-<p>All of these three functions need to be marked as <code>operator</code>.</p>
+<p>これら3つの関数は全て <code>演算子</code> としてマークされる必要がある。</p>
 
-<p>If you want to iterate through an array or a list with an index, you can do it this way:</p>
+<p>もし配列やリストをインデックス付きで繰り返し処理したいならば、この方法を使用できる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="n">indices</span><span class="p">)</span>
   <span class="n">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span></code></pre>
 
-<p>Note that this “iteration through a range” is compiled down to optimal implementation with no extra objects created.</p>
+<p>“範囲の繰り返し実行”は余分なオブジェクトを生成しない最高の実装へコンパイルされることに注意すること。</p>
 
-<p>Alternatively, you can use the <code>withIndex</code> library function:</p>
+<p>別方法として、ライブラリ関数の <code>withIndex</code> を使用することもできる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">for</span> <span class="p">((</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="n">withIndex</span><span class="p">())</span> <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="s">&quot;the element at $index is $value&quot;</span><span class="p">)</span>
 <span class="p">}</span></code></pre>
 
-<p>See the <a href="grammar.html#for">grammar for <em class="keyword">for</em></a>.</p>
+<p><a href="grammar.html#for">grammar for <em class="keyword">for</em></a> を参照のこと。</p>
 
-<h2 id="while-loops">While Loops<a href="#while-loops" class="anchor"></a></h2>
+<h2 id="while">whileループ<a href="#while" class="anchor"></a></h2>
 
-<p><em class="keyword">while</em> and <em class="keyword">do</em>..<em class="keyword">while</em> work as usual</p>
+<p><em class="keyword">while</em> と <em class="keyword">do</em>..<em class="keyword">while</em> はいつものように動く：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">x</span><span class="p">--</span>
@@ -1182,14 +1179,13 @@ If no argument is supplied, the branch conditions are simply boolean expressions
 
 <span class="k">do</span> <span class="p">{</span>
   <span class="k">val</span> <span class="py">y</span> <span class="p">=</span> <span class="n">retrieveData</span><span class="p">()</span>
-<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">y</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="c1">// y is visible here!</span></code></pre>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">y</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="c1">// yはここで可観測！</span></code></pre>
 
-<p>See the <a href="grammar.html#while">grammar for <em class="keyword">while</em></a>.</p>
+<p><a href="grammar.html#while">grammar for <em class="keyword">while</em></a> を参照のこと。</p>
 
-<h2 id="break-and-continue-in-loops">Break and continue in loops<a href="#break-and-continue-in-loops" class="anchor"></a></h2>
+<h2 id="breakcontinue">ループ内でのbreakとcontinue<a href="#breakcontinue" class="anchor"></a></h2>
 
-<p>Kotlin supports traditional <em class="keyword">break</em> and <em class="keyword">continue</em> operators in loops. See <a href="returns.html">Returns and jumps</a>.</p>
-
+<p>Kotlinはループ中の従来の <em class="keyword">break</em> and <em class="keyword">continue</em> 演算子をサポートしている。 <a href="returns.html">Returns and jumps</a> を参照のこと。</p>
 
     </article>
 </div>

@@ -1028,21 +1028,24 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="basic-types">Basic Types<a href="#basic-types" class="anchor"></a></h1>
+        <h1 id="section">基本の型<a href="#section" class="anchor"></a></h1>
 
-<p>In Kotlin, everything is an object in the sense that we can call member functions and properties on any variable. Some types are built-in, because their implementation is optimized, but to the user they look like ordinary classes. In this section we describe most of these types: numbers, characters, booleans and arrays.</p>
+<p>Kotlinでは、メンバ関数やプロパティをどんな変数からでも呼び出せるという意味で、全てのものがオブジェクトである。
+いくつかの型は実装が最適化されているためビルトインであるが、ユーザから見ると普通のクラスのように見える。
+このセクションでは、次の型の大部分を説明する：数値、文字、真偽値（boolean）、配列。</p>
 
-<h2 id="numbers">Numbers<a href="#numbers" class="anchor"></a></h2>
+<h2 id="section-1">数値<a href="#section-1" class="anchor"></a></h2>
 
-<p>Kotlin handles numbers in a way close to Java, but not exactly the same. For example, there are no implicit widening conversions for numbers, and literals are slightly different in some cases.</p>
+<p>KotlinはJavaに似た方法で数を扱うが、完全に同じというわけではない。
+例えば、数値の暗黙の拡大変換や、リテラルはいくつかの事例では少し異なる。</p>
 
-<p>Kotlin provides the following built-in types representing numbers (this is close to Java):</p>
+<p>Kotlinは数値の表現用に次のビルトインの型を提供する（これはJavaに近い）：</p>
 
 <table>
   <thead>
     <tr>
-      <th>Type</th>
-      <th>Bit width</th>
+      <th>型</th>
+      <th>ビット幅</th>
     </tr>
   </thead>
   <tbody>
@@ -1073,75 +1076,75 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
   </tbody>
 </table>
 
-<p>Note that characters are not numbers in Kotlin.</p>
+<p>Kotlinでは文字は数値でないことに注意すること。</p>
 
-<h3 id="literal-constants">Literal Constants<a href="#literal-constants" class="anchor"></a></h3>
+<h3 id="section-2">リテラル定数<a href="#section-2" class="anchor"></a></h3>
 
-<p>There are the following kinds of literal constants for integral values:</p>
+<p>次の整数値を表現するためのリテラル定数には、次の種類がある：
+There are the following kinds of literal constants for integral values:</p>
 
 <ul>
-  <li>Decimals: <code>123</code>
+  <li>小数: <code>123</code>
     <ul>
-      <li>Longs are tagged by a capital <code>L</code>: <code>123L</code></li>
+      <li>Long型の数を表すには大文字の<code>L</code>でタグ付けする: <code>123L</code></li>
     </ul>
   </li>
-  <li>Hexadecimals: <code>0x0F</code></li>
-  <li>Binaries: <code>0b00001011</code></li>
+  <li>16進数: <code>0x0F</code></li>
+  <li>2進数: <code>0b00001011</code></li>
 </ul>
 
-<p>NOTE: Octal literals are not supported.</p>
-
-<p>Kotlin also supports a conventional notation for floating-point numbers:</p>
+<p>注意：8進数のリテラルはサポートされていない。
+Kotlinは浮動小数点数の従来記法もサポートしている。</p>
 
 <ul>
-  <li>Doubles by default: <code>123.5</code>, <code>123.5e10</code></li>
-  <li>Floats are tagged by <code>f</code> or <code>F</code>: <code>123.5f</code></li>
+  <li>Double型（デフォルト）: <code>123.5</code>, <code>123.5e10</code></li>
+  <li><code>f</code> or <code>F</code>でタグ付けするとFloat型: <code>123.5f</code></li>
 </ul>
 
-<h3 id="representation">Representation<a href="#representation" class="anchor"></a></h3>
+<h3 id="section-3">表現<a href="#section-3" class="anchor"></a></h3>
 
-<p>On the Java platform, numbers are physically stored as JVM primitive types, unless we need a nullable number reference (e.g. <code>Int?</code>) or generics are involved. 
-In the latter cases numbers are boxed.</p>
+<p>Javaプラットフォームでは、null許容型な数値の参照（例：<code>Int?</code>）や<a href="https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%83%83%E3%82%AF%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0#Java.E3.81.AE.E3.82.B8.E3.82.A7.E3.83.8D.E3.83.AA.E3.82.AF.E3.82.B9">ジェネリクス</a>が関与している場合を除いて、JVMプリミティブ型として数値が物理的に格納されている
+後者の事例では、数値が<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%83%88%E3%83%9C%E3%82%AF%E3%82%B7%E3%83%B3%E3%82%B0">ボクシング</a>されている。</p>
 
-<p>Note that boxing of numbers does not preserve identity:</p>
-
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">10000</span>
-<span class="n">print</span><span class="p">(</span><span class="n">a</span> <span class="p">===</span> <span class="n">a</span><span class="p">)</span> <span class="c1">// Prints &#39;true&#39;</span>
-<span class="k">val</span> <span class="py">boxedA</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span>
-<span class="k">val</span> <span class="py">anotherBoxedA</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span>
-<span class="n">print</span><span class="p">(</span><span class="n">boxedA</span> <span class="p">===</span> <span class="n">anotherBoxedA</span><span class="p">)</span> <span class="c1">// !!!Prints &#39;false&#39;!!!</span></code></pre>
-
-<p>On the other hand, it preserves equality:</p>
+<p>数値のボクシングは一様性を保持しないことに注意すること：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">10000</span>
-<span class="n">print</span><span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="n">a</span><span class="p">)</span> <span class="c1">// Prints &#39;true&#39;</span>
+<span class="n">print</span><span class="p">(</span><span class="n">a</span> <span class="p">===</span> <span class="n">a</span><span class="p">)</span> <span class="c1">// &#39;true&#39; を出力</span>
 <span class="k">val</span> <span class="py">boxedA</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span>
 <span class="k">val</span> <span class="py">anotherBoxedA</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span>
-<span class="n">print</span><span class="p">(</span><span class="n">boxedA</span> <span class="p">==</span> <span class="n">anotherBoxedA</span><span class="p">)</span> <span class="c1">// Prints &#39;true&#39;</span></code></pre>
+<span class="n">print</span><span class="p">(</span><span class="n">boxedA</span> <span class="p">===</span> <span class="n">anotherBoxedA</span><span class="p">)</span> <span class="c1">// !!! &#39;false&#39; を出力 !!!</span></code></pre>
 
-<h3 id="explicit-conversions">Explicit Conversions<a href="#explicit-conversions" class="anchor"></a></h3>
+<p>一方、これは同一性を保持している：</p>
 
-<p>Due to different representations, smaller types are not subtypes of bigger ones.
-If they were, we would have troubles of the following sort:</p>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">10000</span>
+<span class="n">print</span><span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="n">a</span><span class="p">)</span> <span class="c1">// &#39;true&#39; を出力</span>
+<span class="k">val</span> <span class="py">boxedA</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span>
+<span class="k">val</span> <span class="py">anotherBoxedA</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span>
+<span class="n">print</span><span class="p">(</span><span class="n">boxedA</span> <span class="p">==</span> <span class="n">anotherBoxedA</span><span class="p">)</span> <span class="c1">// &#39;true&#39; を出力</span></code></pre>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// Hypothetical code, does not actually compile:</span>
-<span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// A boxed Int (java.lang.Integer)</span>
-<span class="k">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Long</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span> <span class="c1">// implicit conversion yields a boxed Long (java.lang.Long)</span>
-<span class="n">print</span><span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="n">b</span><span class="p">)</span> <span class="c1">// Surprise! This prints &quot;false&quot; as Long&#39;s equals() check for other part to be Long as well</span></code></pre>
+<h3 id="section-4">明示的変換<a href="#section-4" class="anchor"></a></h3>
 
-<p>So not only identity, but even equality would have been lost silently all over the place.</p>
+<p>異なる表現であるが故に、小さな型は大きな型のサブタイプではない。
+仮に小さな型がそうであれば、次の種類の悩みを抱えたであろう：</p>
 
-<p>As a consequence, smaller types are NOT implicitly converted to bigger types.
-This means that we cannot assign a value of type <code>Byte</code> to an <code>Int</code> variable without an explicit conversion</p>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// 仮説のコードであり、実際はコンパイルできない：</span>
+<span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// ボクシングされたInt型 (java.lang.Integer)</span>
+<span class="k">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Long</span><span class="p">?</span> <span class="p">=</span> <span class="n">a</span> <span class="c1">// 暗黙の変換がLong型 (java.lang.Long) へのボクシングを引き起こす</span>
+<span class="n">print</span><span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="n">b</span><span class="p">)</span> <span class="c1">// 仰天！これはLong型のequals()チェックで他の部分がLong型になるのと同等 に &quot;false&quot; を出力する</span></code></pre>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Byte</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// OK, literals are checked statically</span>
+<p>つまり、一様性だけでなく同一性でさえも全ての場所において静かに失われたのである。</p>
+
+<p>結果として、小さな型は大きな型に暗黙的に変換される <strong>のではない</strong>。
+これは明示的変換無しで<code>Byte</code>型の値を<code>Int</code>型へ代入することができないことを意味する。</p>
+
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Byte</span> <span class="p">=</span> <span class="m">1</span> <span class="c1">// OK, リテラルは静的にチェックされている</span>
 <span class="k">val</span> <span class="py">i</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">b</span> <span class="c1">// ERROR</span></code></pre>
 
-<p>We can use explicit conversions to widen numbers</p>
+<p>明示的変換は数字を拡張する際に使用することができる。</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">i</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="c1">// OK: explicitly widened</span></code></pre>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">i</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="c1">// OK: 明示的に拡張された</span></code></pre>
 
-<p>Every number type supports the following conversions:</p>
+<p>全ての数値型は次の変換をサポートしている：</p>
 
 <ul>
   <li><code>toByte(): Byte</code></li>
@@ -1153,69 +1156,69 @@ This means that we cannot assign a value of type <code>Byte</code> to an <code>I
   <li><code>toChar(): Char</code></li>
 </ul>
 
-<p>Absence of implicit conversions is rarely noticeable because the type is inferred from the context, and arithmetical operations are overloaded for appropriate conversions, for example</p>
+<p>明示的変換がないことは滅多に目立たない。なぜならその型は文脈から推測され、算術演算オーバロードされ適切に変換されるからである。例：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">l</span> <span class="p">=</span> <span class="m">1L</span> <span class="p">+</span> <span class="m">3</span> <span class="c1">// Long + Int =&gt; Long</span></code></pre>
 
-<h3 id="operations">Operations<a href="#operations" class="anchor"></a></h3>
+<h3 id="section-5">算術<a href="#section-5" class="anchor"></a></h3>
 
-<p>Kotlin supports the standard set of arithmetical operations over numbers, which are declared as members of appropriate classes (but the compiler optimizes the calls down to the corresponding instructions).
-See <a href="operator-overloading.html">Operator overloading</a>.</p>
+<p>Kotlinは算術計算の標準セットをサポートしている。それらは適切なクラス（ただしコンパイラは対応する命令の呼び出しを最適化する）のメンバとして宣言されている。
+<a href="operator-overloading.html">Operator overloading</a>を参照のこと。</p>
 
-<p>As of bitwise operations, there’re no special characters for them, but just named functions that can be called in infix form, for example:</p>
+<p>ビット演算のように特別な文字ではなく、ただ中に置かれる名前付きの関数として呼ばれる。例：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">x</span> <span class="p">=</span> <span class="p">(</span><span class="m">1</span> <span class="n">shl</span> <span class="m">2</span><span class="p">)</span> <span class="n">and</span> <span class="m">0</span><span class="n">x000FF000</span></code></pre>
 
-<p>Here is the complete list of bitwise operations (available for <code>Int</code> and <code>Long</code> only):</p>
+<p>これらはビット単位の操作を行う全リストである（<code>Int</code>と<code>Long</code>のみ利用可能）：</p>
 
 <ul>
-  <li><code>shl(bits)</code> – signed shift left (Java’s <code>&lt;&lt;</code>)</li>
-  <li><code>shr(bits)</code> – signed shift right (Java’s <code>&gt;&gt;</code>)</li>
-  <li><code>ushr(bits)</code> – unsigned shift right (Java’s <code>&gt;&gt;&gt;</code>)</li>
+  <li><code>shl(bits)</code> – signed shift left (Javaの <code>&lt;&lt;</code>)</li>
+  <li><code>shr(bits)</code> – signed shift right (Javaの <code>&gt;&gt;</code>)</li>
+  <li><code>ushr(bits)</code> – unsigned shift right (Javaの <code>&gt;&gt;&gt;</code>)</li>
   <li><code>and(bits)</code> – bitwise and</li>
   <li><code>or(bits)</code> – bitwise or</li>
   <li><code>xor(bits)</code> – bitwise xor</li>
   <li><code>inv()</code> – bitwise inversion</li>
 </ul>
 
-<h2 id="characters">Characters<a href="#characters" class="anchor"></a></h2>
+<h2 id="section-6">文字<a href="#section-6" class="anchor"></a></h2>
 
-<p>Characters are represented by the type <code>Char</code>. They can not be treated directly as numbers</p>
+<p>文字は<code>Char</code>型で表される。直接数字として扱うことはできない。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">check</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="n">Char</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// ERROR: incompatible types</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// ERROR: 非互換の型</span>
     <span class="c1">// ...</span>
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>Character literals go in single quotes: <code>'1'</code>, <code>'\n'</code>, <code>'\uFF00'</code>.
-We can explicitly convert a character to an <code>Int</code> number</p>
+<p>文字リテラルはシングルクォートで囲む： <code>'1'</code>, <code>'\n'</code>, <code>'\uFF00'</code>.
+明示的に文字を<code>Int</code>型の数に変換することができる。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">decimalDigitValue</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="n">Char</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="p">!</span><span class="k">in</span> <span class="sc">&#39;0&#39;</span><span class="p">..</span><span class="sc">&#39;9&#39;</span><span class="p">)</span>
     <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Out of range&quot;</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">c</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="p">-</span> <span class="sc">&#39;0&#39;</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="c1">// Explicit conversions to numbers</span>
+  <span class="k">return</span> <span class="n">c</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="p">-</span> <span class="sc">&#39;0&#39;</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="c1">// 数への明示的変換</span>
 <span class="p">}</span></code></pre>
 
-<p>Like numbers, characters are boxed when a nullable reference is needed. Identity is not preserved by the boxing operation.</p>
+<p>数値のように、文字はnull許容参照が必要なときにボクシングされる。同一性はボクシング操作されると保持されない。</p>
 
-<h2 id="booleans">Booleans<a href="#booleans" class="anchor"></a></h2>
+<h2 id="boolean">真偽値（Boolean)<a href="#boolean" class="anchor"></a></h2>
 
-<p>The type <code>Boolean</code> represents booleans, and has two values: <em class="keyword">true</em> and <em class="keyword">false</em>.</p>
+<p><code>Boolean</code> 型は真偽値を表し、 <em class="keyword">true</em> と <em class="keyword">false</em> との2値を表す。</p>
 
-<p>Booleans are boxed if a nullable reference is needed.</p>
+<p>Booleanはnull許容参照が必要なときにボクシングされる。</p>
 
-<p>Built-in operations on booleans include</p>
+<p>Booleanのビルトイン演算は次を含む：</p>
 
 <ul>
-  <li><code>||</code> – lazy disjunction</li>
-  <li><code>&amp;&amp;</code> – lazy conjunction</li>
-  <li><code>!</code> - negation</li>
+  <li><code>||</code> – 遅延評価論理和</li>
+  <li><code>&amp;&amp;</code> – 遅延評価論理積</li>
+  <li><code>!</code> - 否定</li>
 </ul>
 
-<h2 id="arrays">Arrays<a href="#arrays" class="anchor"></a></h2>
+<h2 id="arrays">配列（Arrays）<a href="#arrays" class="anchor"></a></h2>
 
-<p>Arrays in Kotlin are represented by the <code>Array</code> class, that has <code>get</code> and <code>set</code> functions (that turn into <code>[]</code> by operator overloading conventions), and <code>size</code> property, along with a few other useful member functions:</p>
+<p>Kotlinでの配列は <code>Array</code> クラスで表され、<code>get</code> と <code>set</code> 関数を持つ（ <code>[]</code> の演算子をオーバロードすることによって実現している）。また、 <code>size</code> プロパティがいくつかの有用なメンバ関数と共に有効になっている：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="k">private</span> <span class="n">constructor</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">val</span> <span class="py">size</span><span class="p">:</span> <span class="n">Int</span>
@@ -1226,68 +1229,66 @@ We can explicitly convert a character to an <code>Int</code> number</p>
   <span class="c1">// ...</span>
 <span class="p">}</span></code></pre>
 
-<p>To create an array, we can use a library function <code>arrayOf()</code> and pass the item values to it, so that <code>arrayOf(1, 2, 3)</code> creates an array [1, 2, 3].
-Alternatively, the <code>arrayOfNulls()</code> library function can be used to create an array of a given size filled with null elements.</p>
+<p>配列を作るには、ライブラリ関数の<code>arrayOf()</code>にアイテムの値を渡せば良い。<code>arrayOf(1, 2, 3)</code> は[1, 2, 3]の配列を作成する。
+または、ライブラリ関数の <code>arrayOfNulls()</code>で、null要素で埋められた指定サイズの配列を作ることができる。</p>
 
-<p>Another option is to use a factory function that takes the array size and the function that can return the initial value
-of each array element given its index:</p>
+<p>他のやり方として、ファクトリ関数を使う方法がある。これは配列のサイズと各要素のインデックス値と計算する内容を引数に取る：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// Creates an Array&lt;String&gt; with values [&quot;0&quot;, &quot;1&quot;, &quot;4&quot;, &quot;9&quot;, &quot;16&quot;]</span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// 値が [&quot;0&quot;, &quot;1&quot;, &quot;4&quot;, &quot;9&quot;, &quot;16&quot;] である Array&lt;String&gt; を作成する</span>
 <span class="k">val</span> <span class="py">asc</span> <span class="p">=</span> <span class="n">Array</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="p">{</span> <span class="n">i</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">).</span><span class="n">toString</span><span class="p">()</span> <span class="p">})</span></code></pre>
 
-<p>As we said above, the <code>[]</code> operation stands for calls to member functions <code>get()</code> and <code>set()</code>.</p>
+<p>前述したとおり、 <code>[]</code> 演算はメンバ関数の <code>get()</code> と <code>set()</code> を表す。</p>
 
-<p>Note: unlike Java, arrays in Kotlin are invariant. This means that Kotlin does not let us assign an <code>Array&lt;String&gt;</code>
-to an <code>Array&lt;Any&gt;</code>, which prevents a possible runtime failure (but you can use <code>Array&lt;out Any&gt;</code>, 
-see <a href="generics.html#type-projections">Type Projections</a>).</p>
+<p>注意：Javaとは違って、Kotlinでの配列は不変である。つまりKotlinでは <code>Array&lt;Any&gt;</code> へ <code>Array&lt;String&gt;</code> を代入することができないということを表す。これは実行時エラーを回避するためである（しかし、<code>Array&lt;out Any&gt;</code> を使えば代入できる。<a href="generics.html#type-projections">Type Projections</a>を参照のこと）。</p>
 
-<p>Kotlin also has specialized classes to represent arrays of primitive types without boxing overhead: <code>ByteArray</code>,
-<code>ShortArray</code>, <code>IntArray</code> and so on. These classes have no inheritance relation to the <code>Array</code> class, but they
-have the same set of methods and properties. Each of them also has a corresponding factory function:</p>
+<p>Kotlinはプリミティブ型（<code>ByteArray</code> 、 <code>ShortArray</code> 、 <code>IntArray</code> 等）の配列について、オーバーヘッド無しでボクシングができる特別なクラスを持つ。
+これらのクラスは <code>Array</code> クラスと継承関係を持たないが、同じメソッドとプロパティを持つ。
+それぞれのクラスにおいて、対応するファクトリ関数を持つ：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">x</span><span class="p">:</span> <span class="n">IntArray</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
 <span class="n">x</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">+</span> <span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span></code></pre>
 
-<h2 id="strings">Strings<a href="#strings" class="anchor"></a></h2>
+<h2 id="string">文字列（String）<a href="#string" class="anchor"></a></h2>
 
-<p>Strings are represented by the type <code>String</code>. Strings are immutable.
-Elements of a string are characters that can be accessed by the indexing operation: <code>s[i]</code>.
-A string can be iterated over with a <em class="keyword">for</em>-loop:</p>
+<p>文字列は <code>String</code> 型で表現される。文字列はイミュータブル（不変）である。
+文字列の要素は、インデックスの演算でアクセスできる： <code>s[i]</code>
+文字列は <em class="keyword">for</em>-loop でイテレート（繰り返し操作）できる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">for</span> <span class="p">(</span><span class="n">c</span> <span class="k">in</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="p">}</span></code></pre>
 
-<h3 id="string-literals">String Literals<a href="#string-literals" class="anchor"></a></h3>
+<h3 id="section-7">文字列リテラル<a href="#section-7" class="anchor"></a></h3>
 
-<p>Kotlin has two types of string literals: escaped strings that may have escaped characters in them and raw strings that can contain newlines and arbitrary text. An escaped string is very much like a Java string:</p>
+<p>Kotlinは2つの種類の文字列リテラルを持つ：1つはエスケープされた文字列を持ちうる、エスケープ済み文字列である。もう1つは改行と任意の文字を含む生文字列である。
+エスケープ済み文字列はJavaの文字列に非常によく似ている：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">s</span> <span class="p">=</span> <span class="s">&quot;Hello, world!\n&quot;</span></code></pre>
 
-<p>Escaping is done in the conventional way, with a backslash.</p>
+<p>バックスラッシュを用いる従来の手法でエスケープが行われる。</p>
 
-<p>A raw string is delimited by a triple quote (<code>"""</code>), contains no escaping and can contain newlines and any other characters:</p>
+<p>生文字列は三連クオート (<code>"""</code>) で区切られる。エスケープは含まれておらず、改行や他の文字を含めることができる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">text</span> <span class="p">=</span> <span class="s">&quot;&quot;&quot;</span>
   <span class="k">for</span> <span class="p">(</span><span class="n">c</span> <span class="k">in</span> <span class="s">&quot;foo&quot;</span><span class="p">)</span>
     <span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="s">&quot;&quot;&quot;</span></code></pre>
 
-<h3 id="string-templates">String Templates<a href="#string-templates" class="anchor"></a></h3>
+<h3 id="section-8">文字列テンプレート<a href="#section-8" class="anchor"></a></h3>
 
-<p>Strings may contain template expressions, i.e. pieces of code that are evaluated and whose results are concatenated into the string.
-A template expression starts with a dollar sign ($) and consists of either a simple name:</p>
+<p>文字列はテンプレート表現を含むことができる。例）評価され、その結果が文字列と結合されるコードの断片。
+テンプレート表現はダラー記号 ($) で始まり、簡単な名前で構成される：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">i</span> <span class="p">=</span> <span class="m">10</span>
-<span class="k">val</span> <span class="py">s</span> <span class="p">=</span> <span class="s">&quot;i = $i&quot;</span> <span class="c1">// evaluates to &quot;i = 10&quot;</span></code></pre>
+<span class="k">val</span> <span class="py">s</span> <span class="p">=</span> <span class="s">&quot;i = $i&quot;</span> <span class="c1">// &quot;i = 10&quot; であると評価される</span></code></pre>
 
-<p>or an arbitrary expression in curly braces:</p>
+<p>または、波括弧を使った従来の記法もある：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">s</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span>
-<span class="k">val</span> <span class="py">str</span> <span class="p">=</span> <span class="s">&quot;$s.length is ${s.length}&quot;</span> <span class="c1">// evaluates to &quot;abc.length is 3&quot;</span></code></pre>
+<span class="k">val</span> <span class="py">str</span> <span class="p">=</span> <span class="s">&quot;$s.length is ${s.length}&quot;</span> <span class="c1">// &quot;abc.length is 3&quot; であると評価される</span></code></pre>
 
-<p>Templates are supported both inside raw strings and inside escaped strings.
-If you need to represent a literal <code>$</code> character, you can use the following syntax:</p>
+<p>テンプレートは生文字列、エスケープ済み文字列のどちらに含まれていても動作する。
+もし <code>$</code> の文字リテラルを表現する必要がある場合は、次の文法を使用できる：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">val</span> <span class="py">price</span> <span class="p">=</span> <span class="s">&quot;${&#39;$&#39;}9.99&quot;</span></code></pre>
 

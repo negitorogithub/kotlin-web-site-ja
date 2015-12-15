@@ -1028,27 +1028,27 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="returns-and-jumps">Returns and Jumps<a href="#returns-and-jumps" class="anchor"></a></h1>
+        <h1 id="return">returnとジャンプ<a href="#return" class="anchor"></a></h1>
 
-<p>Kotlin has three structural jump operators</p>
+<p>Kotlinには3つの構造的ジャンプ演算子がある。</p>
 
 <ul>
-  <li><em class="keyword">return</em>. By default returns from the nearest enclosing function or <a href="lambdas.html#function-expressions">function expression</a>.</li>
-  <li><em class="keyword">break</em>. Terminates the nearest enclosing loop.</li>
-  <li><em class="keyword">continue</em>. Proceeds to the next step of the nearest enclosing loop.</li>
+  <li><em class="keyword">return</em>。デフォルトでは最近のクロージャ（関数閉包）や <a href="lambdas.html#function-expressions">function expression</a> から抜け出す。</li>
+  <li><em class="keyword">break</em>。最近の内包ループを終わらせる。</li>
+  <li><em class="keyword">continue</em>。次の最近内包ループへ進む。</li>
 </ul>
 
-<h2 id="break-and-continue-labels">Break and Continue Labels<a href="#break-and-continue-labels" class="anchor"></a></h2>
+<h2 id="breakcontinue">breakとcontinueのラベル<a href="#breakcontinue" class="anchor"></a></h2>
 
-<p>Any expression in Kotlin may be marked with a <em class="keyword">label</em>.
-Labels have the form of an identifier followed by the <code>@</code> sign, for example: <code>abc@</code>, <code>fooBar@</code> are valid labels (see the <a href="grammar.html#label">grammar</a>).
-To label an expression, we just put a label in front of it</p>
+<p>Kotlinの式は <em class="keyword">label</em> としてマークできる。
+ラベルは <code>@</code> の記号で終わる識別子を持つ。例として、 <code>abc@</code> や <code>fooBar@</code> は有効なラベルである（ <a href="grammar.html#label">grammar</a>) を参照のこと）。
+式をラベル付けするにはラベルをその前に置けば良い：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">loop</span><span class="err">@</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="m">100</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span></code></pre>
 
-<p>Now, we can qualify a <em class="keyword">break</em> or a <em class="keyword">continue</em> with a label:</p>
+<p><em class="keyword">break</em> や <em class="keyword">continue</em> にはラベルをつけることができる。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="n">loop</span><span class="err">@</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="m">100</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="m">100</span><span class="p">)</span> <span class="p">{</span>
@@ -1057,14 +1057,16 @@ To label an expression, we just put a label in front of it</p>
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>A <em class="keyword">break</em> qualified with a label jumps to the execution point right after the loop marked with that label.
-A <em class="keyword">continue</em> proceeds to the next iteration of that loop.</p>
+<p>ラベル付き <em class="keyword">break</em> はそのラベルが付いたループの後右の実行ポイントへジャンプする。
+<em class="keyword">continue</em> はそのループの次の繰り返し実行（イテレーション）まで進む。</p>
 
-<h2 id="return-at-labels">Return at Labels<a href="#return-at-labels" class="anchor"></a></h2>
+<h2 id="return-1">returnでラベルに復帰する<a href="#return-1" class="anchor"></a></h2>
 
-<p>With function literals, local functions and object expression, functions can be nested in Kotlin. 
-Qualified <em class="keyword">return</em>s allow us to return from an outer function. 
-The most important use case is returning from a function literal. Recall that when we write this:</p>
+<p>Kotlinでは、関数リテラル、ローカル変数、オブジェクト式を使用すると、関数を入れ子にすることができる。
+ラベル付き <em class="keyword">return</em> は外側の関数から復帰することができる。
+最も重要なユースケースは関数リテラルからの復帰である。復帰を書くときは思い出せ：
+（訳注：最新版では次のように書き換わっている。「最も重要なユースケースは <strong>ラムダ式</strong> からの復帰である。復帰を書くときは思い出せ：」）
+<!-- 最新版：The most important use case is returning from a lambda expression. --></p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">ints</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
@@ -1073,9 +1075,9 @@ The most important use case is returning from a function literal. Recall that wh
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>The <em class="keyword">return</em>-expression returns from the nearest enclosing function, i.e. <code>foo</code>.
-(Note that such non-local returns are supported only for function literals passed to <a href="inline-functions.html">inline-functions</a>.)
-If we need to return from a function literal, we have to label it and qualify the <em class="keyword">return</em>:</p>
+<p><em class="keyword">return</em> 式は最近のクロージャ、すなわち <code>foo</code> から復帰する。
+（このようなローカルでない（非局所的な）復帰は <a href="inline-functions.html">inline-functions</a> に渡された関数リテラルにのみサポートされている。）
+もし関数リテラルからの復帰が必要なら、 <em class="keyword">return</em> のラベル付けが必要である：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">ints</span><span class="p">.</span><span class="n">forEach</span> <span class="n">lit</span><span class="err">@</span> <span class="p">{</span>
@@ -1084,8 +1086,9 @@ If we need to return from a function literal, we have to label it and qualify th
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>Now, it returns only from the function literal. Oftentimes it is more convenient to use implicits labels:
-such a label has the same name as the function to which the lambda is passed.</p>
+<p>これは関数リテラルからのみ復帰する。
+（訳注：最新版では「これはラムダ式からのみ復帰する。」）
+多くの場合、暗黙ラベルを使用する方が便利である。例えばこのようなラベルはラムダが渡される関数と同じ名前を持つ。</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">ints</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
@@ -1094,8 +1097,10 @@ such a label has the same name as the function to which the lambda is passed.</p
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 
-<p>Alternatively, we can replace the function literal with a <a href="lambdas.html#function-expressions">function expression</a>.
-A <em class="keyword">return</em> statement in a function expression will return from the function expression itself.</p>
+<p>代わりの手法として、関数リテラルと <a href="lambdas.html#function-expressions">function expression</a> を置換することができる。
+（訳注：最新版では<a href="https://kotlinlang.org/docs/reference/lambdas.html#anonymous-functions">無名関数</a>）
+関数式内の <em class="keyword">return</em> 文は、その関数式自身から復帰する。
+（訳注：最新版では「無名関数内の <em class="keyword">return</em> 文はその無名関数自体から復帰する。」）</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">ints</span><span class="p">.</span><span class="n">forEach</span><span class="p">(</span><span class="k">fun</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
@@ -1104,11 +1109,11 @@ A <em class="keyword">return</em> statement in a function expression will return
   <span class="p">})</span>
 <span class="p">}</span></code></pre>
 
-<p>When returning a value, the parser gives preference to the qualified return, i.e.</p>
+<p>値を返すときにはパーサはラベル付きreturnを優先する。すなわち、</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">return</span><span class="n">@a</span> <span class="m">1</span></code></pre>
 
-<p>means “return <code>1</code> at label <code>@a</code>” and not “return a labeled expression <code>(@a 1)</code>”.</p>
+<p>上記は、「 <code>@a</code> ラベルにおける復帰」を意味し、「 <code>(@a1)</code> ラベルが付いた式からの復帰」ではない。</p>
 
     </article>
 </div>
