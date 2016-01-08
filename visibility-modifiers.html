@@ -1028,107 +1028,104 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
         <span class="text">Edit Page</span>
 </a>
 
-        <h1 id="visibility-modifiers">Visibility Modifiers<a href="#visibility-modifiers" class="anchor"></a></h1>
+        <h1 id="section">可視性修飾子<a href="#section" class="anchor"></a></h1>
 
-<p>Classes, objects, interfaces, constructors, functions, properties and their setters can have <em>visibility modifiers</em>.
-(Getters always have the same visibility as the property.) 
-There are four visibility modifiers in Kotlin: <code>private</code>, <code>protected</code>, <code>internal</code> and <code>public</code>.
-The default visibility, used if there is no explicit modifier, is <code>public</code>.</p>
+<p>クラス、オブジェクト、インタフェース、コンストラクタ、関数、プロパティ、そしてセッターは <em>可視性修飾子 (visibility modifiers)</em> を持つ。
+（ゲッターは常にプロパティと同じ可視性を持つ。）
+Kotlinには4つの可視性修飾子がある： <code>private</code> 、 <code>protected</code> 、 <code>internal</code> 、 <code>public</code> である。
+デフォルトの可視性は明示的修飾子が無い場合に使われる <code>public</code> である。</p>
 
-<p>Below please find explanations of these for different type of declaring scopes.</p>
+<p>これらの型宣言のスコープの違いは、後述する。</p>
 
-<h2 id="packages">Packages<a href="#packages" class="anchor"></a></h2>
+<h2 id="section-1">パッケージ<a href="#section-1" class="anchor"></a></h2>
 
-<p>Functions, properties and classes, objects and interfaces can be declared on the “top-level”, i.e. directly inside a package:</p>
+<p>関数、プロパティ、クラス、オブジェクトそしてインタフェースは”トップレベル”で宣言することができる。すなわち、パッケージの中に直接宣言することができる：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// file name: example.kt</span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// ファイル名： example.kt</span>
 <span class="k">package</span> <span class="nn">foo</span>
 
 <span class="k">fun</span> <span class="nf">baz</span><span class="p">()</span> <span class="p">{}</span>
 <span class="k">class</span> <span class="nc">Bar</span> <span class="p">{}</span></code></pre>
 
 <ul>
-  <li>If you do not specify any visibility modifier, <code>public</code> is used by default, which means that your declarations will be
-visible everywhere;</li>
-  <li>If you mark a declaration <code>private</code>, it will only be visible inside the file containing the declaration;</li>
-  <li>If you mark it <code>internal</code>, it is visible everywhere in the same module;</li>
-  <li><code>protected</code> is not available for top-level declarations.</li>
+  <li>可視性修飾子を指定しなければ、宣言がどこからでも見える <code>public</code> がデフォルトとして使用される。</li>
+  <li><code>private</code> として宣言すれば、その宣言を含むファイル中でのみ見える</li>
+  <li><code>internal</code> として宣言すれば、同じモジュールのどこからでも見える</li>
+  <li><code>protected</code> はトップレベル宣言では有効ではない</li>
 </ul>
 
-<p>Examples:</p>
+<p>例：</p>
 
-<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// file name: example.kt</span>
+<pre><code class="code-block _highlighted lang_kotlin"><span class="c1">// ファイル名： example.kt</span>
 <span class="k">package</span> <span class="nn">foo</span>
 
-<span class="k">private</span> <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// visible inside example.kt</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// example.ktの中で見える</span>
 
-<span class="k">public</span> <span class="k">var</span> <span class="py">bar</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">5</span> <span class="c1">// property is visible everywhere</span>
-    <span class="k">private</span> <span class="k">set</span>         <span class="c1">// setter is visible only in example.kt</span>
-    
-<span class="k">internal</span> <span class="k">val</span> <span class="py">baz</span> <span class="p">=</span> <span class="m">6</span>    <span class="c1">// visible inside the same module</span></code></pre>
+<span class="k">public</span> <span class="k">var</span> <span class="py">bar</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">5</span> <span class="c1">// プロパティはどこからでも見える</span>
+    <span class="k">private</span> <span class="k">set</span>         <span class="c1">// セッターはexample.ktの中でのみ見える</span>
 
-<h2 id="classes-and-interfaces">Classes and Interfaces<a href="#classes-and-interfaces" class="anchor"></a></h2>
+<span class="k">internal</span> <span class="k">val</span> <span class="py">baz</span> <span class="p">=</span> <span class="m">6</span>    <span class="c1">// 同じモジュール内で見える</span></code></pre>
 
-<p>When declared inside a class:</p>
+<h2 id="section-2">クラスと継承<a href="#section-2" class="anchor"></a></h2>
+
+<p>When declared inside a class:
+クラスの中で宣言した場合：</p>
 
 <ul>
-  <li><code>private</code> means visible inside this class only (including all its members);</li>
-  <li><code>protected</code> — same as <code>private</code> + visible in subclasses too;</li>
-  <li><code>internal</code> — any client <em>inside this module</em> who sees the declaring class sees its <code>internal</code> members;</li>
-  <li><code>public</code> — any client who sees the declaring class sees its <code>public</code> members.</li>
+  <li><code>private</code> — そのクラス内（全てのメンバを含む）でのみ見える</li>
+  <li><code>protected</code> — <code>private</code> と同じ + サブクラスでも見える</li>
+  <li><code>internal</code> —  その宣言したクラスを見る <em>そのモジュール内の</em> 任意のクライアントはその内部メンバが見える</li>
+  <li><code>public</code> — その宣言クラスを見る任意のクライアントは <code>public</code> のメンバが見える</li>
 </ul>
 
-<p><em>NOTE</em> for Java users: outer class does not see private members of its inner classes in Kotlin.</p>
+<p><em>注意</em> Javaユーザへ：Kotlinでは、外部クラス (outer class) はその内部クラス (inner class) のprivateメンバが見えない。</p>
 
-<p>Examples:</p>
+<p>例：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">Outer</span> <span class="p">{</span>
     <span class="k">private</span> <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="m">1</span>
     <span class="k">protected</span> <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="m">2</span>
     <span class="k">internal</span> <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="m">3</span>
-    <span class="k">val</span> <span class="py">d</span> <span class="p">=</span> <span class="m">4</span>  <span class="c1">// public by default</span>
-    
+    <span class="k">val</span> <span class="py">d</span> <span class="p">=</span> <span class="m">4</span>  <span class="c1">// デフォルトでpublic</span>
+
     <span class="k">protected</span> <span class="k">class</span> <span class="nc">Nested</span> <span class="p">{</span>
         <span class="k">public</span> <span class="k">val</span> <span class="py">e</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">5</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">Subclass</span> <span class="p">:</span> <span class="n">Outer</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// a is not visible</span>
-    <span class="c1">// b, c and d are visible</span>
-    <span class="c1">// Nested and e are visible</span>
+    <span class="c1">// aは見えない</span>
+    <span class="c1">// b, c, dは見える</span>
+    <span class="c1">// Nestedとeは見える</span>
 <span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">Unrelated</span><span class="p">(</span><span class="n">o</span><span class="p">:</span> <span class="n">Outer</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// o.a, o.b are not visible</span>
-    <span class="c1">// o.c and o.d are visible (same module)</span>
-    <span class="c1">// Outer.Nested is not visible, and Nested::e is not visible either </span>
+    <span class="c1">// o.a, o.b は見えない</span>
+    <span class="c1">// o.c と o.d は見える（同じモジュール）</span>
+    <span class="c1">// Outer.Nested は見えないし、 Nested::e も見えない</span>
 <span class="p">}</span></code></pre>
 
-<h3 id="constructors">Constructors<a href="#constructors" class="anchor"></a></h3>
+<h3 id="section-3">コンストラクタ<a href="#section-3" class="anchor"></a></h3>
 
-<p>To specify a visibility of the primary constructor of a class, use the following syntax (note that you need to add an
-explicit <em class="keyword">constructor</em> keyword):</p>
+<p>クラスの主コンストラクタの可視性を指定したい場合は、次の構文を使うと良い（明示的に <em class="keyword">constructor</em> キーワードを付加しなければならないことに注意）：</p>
 
 <pre><code class="code-block _highlighted lang_kotlin"><span class="k">class</span> <span class="nc">C</span> <span class="k">private</span> <span class="n">constructor</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span></code></pre>
 
-<p>Here the constructor is private. By default, all constructors are <code>public</code>, which effectively
-amounts to them being visible everywhere where the class is visible (i.e. a constructor of an <code>internal</code> class is only 
-visible within the same module).</p>
+<p>このコンストラクタはprivateである。デフォルトでは、全てのコンストラクタは <code>public</code> である。クラスが見える場所全てから可観測であることは有効的である（すなわち、 <code>internal</code> クラスのコンストラクタはそのモジュール内でのみ見える）。</p>
 
-<h3 id="local-declarations">Local declarations<a href="#local-declarations" class="anchor"></a></h3>
+<h3 id="local-declarations">局所的宣言（Local declarations）<a href="#local-declarations" class="anchor"></a></h3>
 
-<p>Local variables, functions and classes can not have visibility modifiers.</p>
+<p>ローカル変数、ローカル関数、ローカルクラスは可視性修飾子を持てない。</p>
 
-<h2 id="modules">Modules<a href="#modules" class="anchor"></a></h2>
+<h2 id="section-4">モジュール<a href="#section-4" class="anchor"></a></h2>
 
-<p>The <code>internal</code> visibility modifier means that the member is visible with the same module. More specifically,
-a module is a set of Kotlin files compiled together:</p>
+<p><code>internal</code> 可視性修飾子はメンバが同じモジュールで見えることを意味する。
+具体的には、複数のKotlinファイルで構成される1つのモジュールは一緒にコンパイルされる：</p>
 
 <ul>
-  <li>an IntelliJ IDEA module;</li>
-  <li>a Maven or Gradle project;</li>
-  <li>a set of files compiled with one invocation of the <kotlinc> Ant task.</kotlinc></li>
+  <li>IntelliJ IDEAのモジュール</li>
+  <li>Maven や Gradle のプロジェクト</li>
+  <li>Antタスクの1つの呼び出しで複数のファイルがコンパイルされる</li>
 </ul>
 
     </article>
@@ -1149,7 +1146,7 @@ require(['page/reference'], function(page) {
         <div class="g-layout">
 
             <div class="terms-copyright">
-                &copy; 2000&ndash;2015 JetBrains. All rights reserved
+                &copy; 2000&ndash;2016 JetBrains. All rights reserved
             </div>
 
             <div class="terms-sponsor">
