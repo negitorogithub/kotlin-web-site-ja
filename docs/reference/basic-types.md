@@ -626,6 +626,37 @@ val text = """
 ```
 -->
 
+先頭の空白を[`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html)関数で削除することができます。
+
+<!--original
+You can remove leading whitespace with [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) function:
+-->
+
+``` kotlin
+val text = """
+    |Tell me and I forget. 
+    |Teach me and I remember. 
+    |Involve me and I learn.
+    |(Benjamin Franklin)
+    """.trimMargin()
+```
+
+<!--original
+``` kotlin
+val text = """
+    |Tell me and I forget. 
+    |Teach me and I remember. 
+    |Involve me and I learn.
+    |(Benjamin Franklin)
+    """.trimMargin()
+```
+-->
+
+デフォルトでは`|`はマージンの接頭辞として使用されますが、`trimMargin(">")`のように、パラメータとして別の文字を渡すとそれを接頭辞として使用することができます。
+
+<!--original
+By default `|` is used as margin prefix, but you can choose another character and pass it as a parameter, like `trimMargin(">")`.
+-->
 
 ### 文字列テンプレート
 
