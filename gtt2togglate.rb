@@ -28,7 +28,7 @@ end
 
 # togglateの実行結果をキャッシュする
 def exec_togglate(file_name)
-  togglate_output = `bundle exec togglate create ./docs/reference/#{file_name}`
+  togglate_output = `bundle exec togglate create ./docs_original/reference/#{file_name}`
   togglate_output.split('[translation here]').map { |t|
     next if t.empty?
     t.sub("\n\n<!--original\n", '').sub("\n-->\n\n", '').sub(/<script.*<\/script>\n/m, '')
