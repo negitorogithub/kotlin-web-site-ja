@@ -75,6 +75,8 @@ val doubled = ints.map { it -> it * 2 }
 
 Note that the parentheses in a call can be omitted entirely if the lambda is the only argument to that call.
 
+### `it`: implicit name of a single parameter
+
 One other helpful convention is that if a function literal has only one parameter,
 its declaration may be omitted (along with the `->`), and its name will be `it`:
 
@@ -98,14 +100,14 @@ A lambda expression or an anonymous function is a "function literal", i.e. a fun
 but passed immediately as an expression. Consider the following example:
 
 ``` kotlin
-max(strings, { a, b -> a.length() < b.length() })
+max(strings, { a, b -> a.length < b.length })
 ```
 
 Function `max` is a higher-order function, i.e. it takes a function value as the second argument.
 This second argument is an expression that is itself a function, i.e. a function literal. As a function, it is equivalent to
 
 ``` kotlin
-fun compare(a: String, b: String): Boolean = a.length() < b.length()
+fun compare(a: String, b: String): Boolean = a.length < b.length
 ```
 
 ### Function Types
