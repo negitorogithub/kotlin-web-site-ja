@@ -204,15 +204,3 @@ because this is the default for interfaces, if the function has no body). Now, i
 an implementation. And if we derive *D* from *A* and *B*, we don’t have to override *bar()*, because we have inherited only one implementation of it.
 But we have inherited two implementations of *foo()*, so the compiler does not know which one to choose, and forces us to override *foo()* and say what we want explicitly.
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>

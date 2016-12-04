@@ -183,15 +183,3 @@ val ordinal: Int
 The enum constants also implement the [Comparable](/api/latest/jvm/stdlib/kotlin/-comparable/index.html) interface,
 with the natural order being the order in which they are defined in the enum class.
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>

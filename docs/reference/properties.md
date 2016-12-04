@@ -480,15 +480,3 @@ reading from a map by a given key, accessing a database, notifying listener on a
 Such common behaviours can be implemented as libraries using [_delegated properties_](delegated-properties.html).
 
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>

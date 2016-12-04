@@ -463,15 +463,3 @@ Kotlinはループ中の従来の *break*{: .keyword }と*continue*{: .keyword }
 <!--original
 Kotlin supports traditional *break*{: .keyword } and *continue*{: .keyword } operators in loops. See [Returns and jumps](returns.html).
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>

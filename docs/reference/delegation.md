@@ -78,15 +78,3 @@ The *by*{: .keyword }-clause in the supertype list for `Derived` indicates that 
 and the compiler will generate all the methods of `Base` that forward to `b`.
 
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>

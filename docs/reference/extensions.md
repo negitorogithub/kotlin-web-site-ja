@@ -669,15 +669,3 @@ list.swap(list.binarySearch(otherList.max()), list.max())
 <!--original
 But we don't want to implement all the possible methods inside the class `List`, right? This is where extensions help us.
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>

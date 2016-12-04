@@ -173,15 +173,3 @@ println("$name, $age years of age") // prints "Jane, 35 years of age"
 The standard library provides `Pair` and `Triple`. In most cases, though, named data classes are a better design choice, 
 because they make the code more readable by providing meaningful names for properties.
 -->
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-$(function() {
-  $("*").contents().filter(function() {
-    return this.nodeType==8 && this.nodeValue.match(/^original/);
-  }).each(function(i, e) {
-    var tooltips = e.nodeValue.replace(/^original *[\n\r]|[\n\r]$/g, '');
-    $(this).prev().attr('title', tooltips);
-  });
-});
-</script>
