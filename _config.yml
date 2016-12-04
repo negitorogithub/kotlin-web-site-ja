@@ -19,6 +19,7 @@ exclude:
   - notes.txt
   - LICENSE
   - node_modules
+  - docs_original
 
 include:
   - js
