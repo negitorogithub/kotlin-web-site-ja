@@ -4,7 +4,7 @@ webpackJsonp([7],[
 
 	var NavTree = __webpack_require__(25);
 	var $ = __webpack_require__(2);
-	
+
 	$(document).ready(function () {
 	  $(':header').each(function (ind, element) {
 	        var id = element.getAttribute("id");
@@ -16,10 +16,9 @@ webpackJsonp([7],[
 	        referenceElement.href = "#" + id;
 	        element.appendChild(referenceElement)
 	    });
-	
+
 	  new NavTree(document.getElementById('tutorials-nav'));
 	});
 
 /***/ }
 ]);
-//# sourceMappingURL=tutorials.js.map
